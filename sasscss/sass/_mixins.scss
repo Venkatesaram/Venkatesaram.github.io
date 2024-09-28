@@ -1,0 +1,12 @@
+// Mixins
+
+@mixin create{
+    font-size: 25px;
+    color: $success;
+    font-size: $font-size-xl;
+    
+}
+
+#one{
+    @include create;
+}

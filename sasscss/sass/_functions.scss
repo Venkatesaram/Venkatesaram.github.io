@@ -1,0 +1,13 @@
+// Example function for a simple color manipulation
+
+@function ram-fontsize($val){
+    @return 20px * $val;
+    @return 100*2 * $val;
+}
+
+
+
+#two{
+    font-size: ram-fontsize(2);
+    color:$primary-color;
+}

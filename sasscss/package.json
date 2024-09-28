@@ -1,0 +1,28 @@
+{
+  "name": "frontend-sass-css",
+  "version": "1.0.0",
+  "description": "Node & NPM Basics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass ./sass/index.scss  ./css/style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": " "
+  },
+  "keywords": [
+    "Node",
+    "NPM",
+    "JS",
+    "SASS"
+  ],
+  "author": "S Venkatesa Ram",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3"
+  },
+  "devDependencies": {
+    "sass": "^1.79.4"
+  }
+}

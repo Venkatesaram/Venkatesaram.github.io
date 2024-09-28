@@ -1,0 +1,50 @@
+// Variable
+
+$primary-color: #3498db;
+$indigo:rgba(255, 255, 0, 0.4);
+$font-family:"Roboto", sans-serif;
+$danger:#ea162b;
+$primary: #0066ff;
+ $success:#198754;
+
+$base-font-size: 1rem;
+
+$font-size-sm: $base-font-size * 0.75;
+$font-size-md: $base-font-size;
+$font-size-lg: $base-font-size * 1.5;
+$font-size-xl: $base-font-size * 2;
+$font-size-xxl:$base-font-size * 3;
+
+
+$colors:(
+    "primary": #0066ff,
+    "success": #198754,
+    "danger": #ea162b,
+    );
+
+
+header h1{
+color:$primary-color;
+font-family: $font-family;
+font-size: $font-size-xxl;
+
+}
+
+.down{
+    color: $success;
+    font-family: $font-family;
+}
+
+#one{
+    font-size: $font-size-lg;
+    color: $primary-color;
+    font-family: $font-family;
+
+}
+
+.last p{ 
+    font-size: $font-size-lg;
+    font-family:$font-family;
+    color: $success;
+    
+}

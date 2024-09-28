@@ -1,0 +1,89 @@
+header h1 {
+  color: #3498db;
+  font-family: "Roboto", sans-serif;
+  font-size: 3rem;
+}
+
+.down {
+  color: #198754;
+  font-family: "Roboto", sans-serif;
+}
+
+#one {
+  font-size: 1.5rem;
+  color: #3498db;
+  font-family: "Roboto", sans-serif;
+}
+
+.last p {
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  color: #198754;
+}
+
+.button, .button2 {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #0066ff;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#two {
+  font-size: 40px;
+  color: #3498db;
+}
+
+.color-1 {
+  background-color: red;
+}
+
+.color-2 {
+  background-color: green;
+}
+
+.color-3 {
+  background-color: blue;
+}
+
+.color-4 {
+  background-color: yellow;
+}
+
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 35px;
+}
+
+#one {
+  font-size: 25px;
+  color: #198754;
+  font-size: 2rem;
+}
+
+nav {
+  background-color: rgb(30, 23, 23);
+  padding: 10px;
+}
+nav a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  color: azure;
+}
+
+header p {
+  line-height: 30px;
+  text-indent: 5px;
+  color: #0066ff;
+  font-size: 1.5rem;
+}
+header p a {
+  text-decoration: none;
+  color: tomato;
+}
+
+/*# sourceMappingURL=style.css.map */

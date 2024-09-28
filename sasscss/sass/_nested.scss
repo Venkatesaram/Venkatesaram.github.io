@@ -1,0 +1,22 @@
+    nav{
+        background-color: rgb(30, 23, 23);
+        padding: 10px;
+        a{
+            text-decoration: none;
+            display: inline-block;
+            padding: 5px 10px;
+            color: azure;
+            
+        }
+    }
+
+   header p{
+        line-height: 30px;
+        text-indent: 5px;
+        color:$primary;
+        font-size: $font-size-lg;
+        a{
+            text-decoration:none;
+            color: tomato;
+        }
+    }
