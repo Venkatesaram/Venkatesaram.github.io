@@ -1,0 +1,15 @@
+
+$font-sizes: (
+    small: 12px,
+    medium: 16px,
+    large: 50px,
+    high: 35px
+);
+
+h2 {
+    font-size: map-get($font-sizes, large);
+}
+
+h3{
+    font-size: map-get($font-sizes, high );
+}

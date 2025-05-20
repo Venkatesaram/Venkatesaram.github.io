@@ -1,0 +1,59 @@
+header{
+    text-align:center;
+}
+
+.heading2{
+    display: flex;
+    flex-direction: row;
+}
+
+.heading3{
+    display: flex;
+    flex-direction:row-reverse;
+    padding-bottom: 200px;
+}
+
+.heading4{
+    display:flex;
+    flex-direction: row-reverse;
+}
+
+table{
+    border-collapse: collapse;
+    width: 1000px;
+   
+}
+
+tr, th{
+
+    border: 1px solid black;
+    padding: 10px;
+    width: 300px;
+    height: 50px;
+}
+
+input{
+    border:1px solid white;
+    border-bottom: 1px solid #000000;
+}
+
+.date{
+    margin-left: 80%;
+
+}
+input[type="checkbox"]:checked+label{
+    color: rgb(139, 218, 2);
+}
+
+input[class="aqua"]:checked{
+    color: aqua;
+}
+
+.heading img{
+    height: 40px;
+    width: 50px;
+    margin-right:10px;
+    padding-top: 20px;
+    
+
+}

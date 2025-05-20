@@ -1,0 +1,15 @@
+
+// Example loop for generating a color palette
+
+$colors: (
+    red,
+    green,
+    blue,
+    yellow,
+);
+
+@for $i from 1 through length($colors) {
+    .color-#{$i} {
+        background-color: nth($colors, $i);
+    }
+}

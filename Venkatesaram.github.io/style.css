@@ -1,0 +1,90 @@
+body{
+  background-color: whitesmoke;
+}
+
+/*Even type qustion answers */
+
+
+/*1.Achive using html make it is red*/
+
+
+label span{
+  color: red;
+}
+
+
+/*2.Dropdown select should have shadow*/
+
+.Form1 select{
+  box-shadow: 6px 6px 25px rgb(2, 53, 2);
+}
+
+/*3.Dropdown value have altertive colors.*/
+
+.Form1 option:nth-child(odd){
+  background-color:gray;
+  color:darkgreen; }
+
+
+  .Form1 option:nth-child(even){
+    background-color:gold;
+    color: lavenderblush
+  
+}
+
+/*4.Mandatory labels first letter should be bolder than other characters.*/
+
+.Form1 p::first-letter{
+  font-weight: bolder;
+  
+}
+
+/*5.Check box selected should change the color of the text to red.*/
+
+.Form1 input[type="checkbox"]:checked + label{
+  color: red;
+  font-weight: bolder;
+}
+
+
+
+
+/*-----ODD questions answers------*/
+
+/* 1.Add (*) and make it color blue in css */
+
+.Form2 label[class="star"]::after{
+  content: "*";
+  font-weight: bolder;
+  color: red;
+
+}
+
+
+
+/* 2.Mandatory message ("Required" attribute given in the mandatory input element) */
+
+
+
+
+
+
+
+/* 3.Onclick input field make it border highlight . */
+ 
+.Form2 input[type="Submit"]:focus{
+  border: 2px solid red;
+  padding: 2px 2px;
+}
+
+
+/* 4.Whenever moushover on mandarory label show color green and non mandarory label show color yellow */
+
+.Form2 label:hover{
+  color: green;
+}
+
+.Form2 label[for="city"]:hover{
+  color: yellow;
+  font-size: 18px;
+}
