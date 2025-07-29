@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" id="WebApp_ID" version="6.0">
+  <display-name>MyServletFullInputBoxGetting</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+  </welcome-file-list>
+  
+  <context-param>
+  <param-name>LeaguesFileConnectionNameInListenerServlet</param-name>
+  <param-value>WEB-INF/leagues.txt</param-value>
+  </context-param>
+  
+  <listener>
+  <listener-class>sl314.servlet.ListLeaguesListenerServlet</listener-class>
+  </listener>
+  
+  <servlet>
+  <servlet-name>Main-Servlet</servlet-name>
+  <servlet-class>sl314.servlet.MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Main-Servlet</servlet-name>
+  <url-pattern>/formOne</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>Success</servlet-name>
+  <servlet-class>sl314.servlet.Success</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Success</servlet-name>
+  <url-pattern>/success.linkXmlConnetion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>Error</servlet-name>
+  <servlet-class>sl314.servlet.Error</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>Error</servlet-name>
+  <url-pattern>/error.linkXmlConnection</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  <servlet-name>ListLeaguesServlet</servlet-name>
+  <servlet-class>sl314.servlet.ListLeaguesListenerServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>ListLeaguesServlet</servlet-name>
+  <url-pattern>/formTwo</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

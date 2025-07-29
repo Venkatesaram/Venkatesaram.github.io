@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Web-Library</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="laptop_13565372.png">
+    </head>
+    <body>
+        <div class="navbar">
+            <h1>Library management</h1>
+        </div>
+      
+        <div class="container">
+         <div class="book-container">
+            <h2>Rich dad poor dad</h2>
+            <h5>Robert</h5>
+             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque quasi consectetur officia nulla doloribus et fugiat quibusdam exercitationem sed error? Voluptatibus deserunt inventore fuga! Ullam, harum. Quidem repellat est iure.</p>
+             <button onclick="deleteBook(event)">delete</button>
+         </div>
+         
+        </div>
+
+        <div class="popup-overlay">
+
+        </div>
+
+        <div class="popup-box">
+            <h2>Add Book</h2>
+            <form >
+                <input type="text" placeholder="Book Title" id="book-title-input">
+                <input type="text" placeholder="Book Author" id="book-author-input">
+                <textarea placeholder="Short Description" id="book-description-input"></textarea>
+                <button id="add-book">ADD</button>
+                <button id="cancel-popup">CANCEL</button>
+            </form>
+        </div>
+
+        <button class="add-button" id="add-popup-button">+</button>
+
+
+
+
+        <script src="javascript.js"></script>
+    </body>
+    
+</html>
