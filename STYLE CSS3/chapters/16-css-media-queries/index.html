@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16. CSS Media Queries - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+  <h1>Chapter 16: CSS Media Queries</h1>
+
+  <p class="device" style="flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 20px;">
+    <span>Current Device: <span class="device-name">Desktop</span></span>
+    <span class="viewport-tip" style="font-size: 11px; color: #64748b; font-weight: normal; line-height: 1.4; max-width: 600px; display: block; margin-top: 4px;">
+      💡 <strong>Student Tip:</strong> Media queries are evaluated based on the <em>viewport width of this preview card (iframe)</em>, which is currently under 768px due to the dashboard sidebar. To see the <strong>Tablet Layout</strong> inside this card, widen your outer browser window (e.g. above 1170px) so the preview card itself expands to 768px!
+    </span>
+  </p>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- Navigation -->
+  <!-- ===================================== -->
+  <section class="section">
+    <h2>1. Responsive Navigation</h2>
+    <nav class="navbar">
+      <div>Home</div>
+      <div>About</div>
+      <div>Services</div>
+      <div>Contact</div>
+    </nav>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- Grid -->
+  <!-- ===================================== -->
+  <section class="section">
+    <h2>2. Responsive Grid</h2>
+    <div class="grid">
+      <div>Card 1</div>
+      <div>Card 2</div>
+      <div>Card 3</div>
+      <div>Card 4</div>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- Image -->
+  <!-- ===================================== -->
+  <section class="section">
+    <h2>3. Responsive Image</h2>
+    <img src="https://picsum.photos/900/400" class="image" alt="Responsive Demo Image">
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- Typography -->
+  <!-- ===================================== -->
+  <section class="section">
+    <h2>4. Responsive Font Size</h2>
+    <p class="text">
+      Resize your browser window to see the font size change.
+    </p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- Hide / Show -->
+  <!-- ===================================== -->
+  <section class="section">
+    <h2>5. Hide & Show</h2>
+    <p class="desktop">💻 Desktop Only Content (Visible on screens &gt; 768px)</p>
+    <p class="mobile">📱 Mobile Only Content (Visible on screens &lt;= 768px)</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- Flex -->
+  <!-- ===================================== -->
+  <section class="section">
+    <h2>6. Responsive Flexbox</h2>
+    <div class="flex">
+      <div>A</div>
+      <div>B</div>
+      <div>C</div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>

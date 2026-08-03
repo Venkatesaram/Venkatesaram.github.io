@@ -1,0 +1,448 @@
+/* 30. Final Capstone Project - CSS3 Design System */
+
+/* Centralized variables & design tokens */
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg-dark: #0f172a;
+  --bg-card: #1e293b;
+  --border-color: #334155;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --radius-lg: 16px;
+  --radius-md: 8px;
+  --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+  --shadow-lg: 0 10px 25px rgba(99, 102, 241, 0.15);
+  --transition-fast: 0.2s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+}
+
+/* Global Reset & Base Layout */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   Navigation Component: .c-navbar
+   ========================================================================== */
+.c-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 8%;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background-color: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+
+.c-navbar__brand {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+.c-navbar__menu {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.c-navbar__link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color var(--transition-fast);
+}
+
+.c-navbar__link:hover {
+  color: white;
+}
+
+.c-navbar__link--active {
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 4px;
+}
+
+/* ==========================================================================
+   Hero Component: .c-hero
+   ========================================================================== */
+.c-hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  text-align: center;
+  padding: 60px 20px;
+  background-image: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 50%);
+}
+
+.c-hero__content {
+  max-width: 800px;
+}
+
+.c-hero__tag {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.c-hero__title {
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  margin: 25px 0 15px 0;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.c-hero__desc {
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 35px;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.c-hero__actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.c-hero__btn {
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: all var(--transition-fast);
+}
+
+.c-hero__btn--primary {
+  background-color: var(--primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.c-hero__btn--primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.c-hero__btn--secondary {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 2px solid var(--border-color);
+}
+
+.c-hero__btn--secondary:hover {
+  background-color: var(--border-color);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Services Component: .c-services
+   ========================================================================== */
+.c-services {
+  padding: 100px 8%;
+  background-color: #0b0f19;
+}
+
+.c-services__title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 60px;
+}
+
+.c-services__title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.c-services__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.c-services__card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 40px 30px;
+  text-align: center;
+  transition: transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.c-services__card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary);
+}
+
+.c-services__icon {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+.c-services__name {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.c-services__desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Work Component: .c-work
+   ========================================================================== */
+.c-work {
+  padding: 100px 8%;
+}
+
+.c-work__title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 60px;
+}
+
+.c-work__title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.c-work__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.c-work__card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: transform var(--transition-normal);
+}
+
+.c-work__card:hover {
+  transform: translateY(-6px);
+}
+
+.c-work__media {
+  height: 220px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+  position: relative;
+  cursor: pointer;
+}
+
+.c-work__media--purple {
+  background: linear-gradient(135deg, #a855f7 0%, #4c1d95 100%);
+}
+
+.c-work__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(99, 102, 241, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.c-work__card:hover .c-work__overlay {
+  opacity: 1;
+}
+
+.c-work__content {
+  padding: 24px;
+}
+
+.c-work__tag {
+  background-color: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.c-work__name {
+  margin: 0;
+  font-size: 18px;
+  color: var(--text-main);
+}
+
+/* ==========================================================================
+   Contact Component: .c-contact
+   ========================================================================== */
+.c-contact {
+  padding: 100px 8%;
+  background-color: #0b0f19;
+}
+
+.c-contact__box {
+  max-width: 650px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  padding: 45px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.c-contact__title {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.c-contact__desc {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 35px 0;
+  line-height: 1.5;
+}
+
+.c-contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.c-contact__row {
+  display: flex;
+  gap: 20px;
+}
+
+.c-contact__group {
+  flex: 1;
+}
+
+.c-contact__input,
+.c-contact__textarea {
+  width: 100%;
+  background-color: var(--bg-dark);
+  border: 2px solid var(--border-color);
+  color: white;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  outline: none;
+  font-family: inherit;
+  font-size: 13px;
+  transition: border-color var(--transition-fast);
+}
+
+.c-contact__input:focus,
+.c-contact__textarea:focus {
+  border-color: var(--primary);
+}
+
+.c-contact__submit {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+  transition: all var(--transition-fast);
+}
+
+.c-contact__submit:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.c-contact__submit:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Footer Component: .c-footer
+   ========================================================================== */
+.c-footer {
+  text-align: center;
+  padding: 40px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.c-footer__text {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Media Queries)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .c-navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .c-navbar__menu {
+    gap: 16px;
+  }
+
+  .c-hero {
+    min-height: 60vh;
+    padding: 40px 15px;
+  }
+
+  .c-contact__row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .c-contact__box {
+    padding: 30px 20px;
+  }
+}

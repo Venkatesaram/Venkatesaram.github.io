@@ -1,0 +1,52 @@
+/* 02. Ways to Add CSS */
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin: 0;
+}
+
+.container {
+  /* Some layout defaults */
+  width: 90%;
+}
+
+/* Let's style the method cards */
+.method-card {
+  margin: 15px 0;
+  padding: 15px 20px;
+  border-radius: 6px;
+  border-left: 5px solid #d1d5db;
+  background-color: #f9fafb;
+}
+
+/* external style classes to show cascade/specific design styling */
+.inline-style {
+  border-left-color: #ec4899; /* Pink styling representing inline examples */
+}
+
+.internal-style {
+  border-left-color: #f59e0b; /* Amber representing internal styles */
+}
+
+.external-style {
+  border-left-color: #10b981; /* Emerald representing external styles */
+}
+
+.priority-box {
+  margin-top: 25px;
+  padding: 15px;
+  background-color: #eff6ff;
+  border: 1px dashed #3b82f6;
+  border-radius: 8px;
+  color: #1e3a8a;
+}
+
+.priority-box h4 {
+  margin: 0 0 8px 0;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02. Ways to Add CSS - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<!-- 1. Inline CSS applied directly using style attribute -->
+<div class="container" style="background-color: #ffffff; padding: 30px; border-radius: 10px; max-width: 600px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  
+  <h1 style="color: #4f46e5; text-align: center;">Ways to Add CSS</h1>
+  
+  <p>There are three main methods of inserting style rules into a document:</p>
+  
+  <!-- 2. Internal CSS (defined in style tags in the head - represented by style.css here) -->
+  <div class="method-card inline-style">
+    <h3>1. Inline CSS</h3>
+    <p>Written directly inside the HTML element using the <code>style</code> attribute. Excellent for quick tests but bad for maintainability.</p>
+  </div>
+  
+  <div class="method-card internal-style">
+    <h3>2. Internal CSS</h3>
+    <p>Defined inside the <code>&lt;style&gt;</code> element in the <code>&lt;head&gt;</code> section of an HTML document. Good for single-page files.</p>
+  </div>
+  
+  <div class="method-card external-style">
+    <h3>3. External CSS</h3>
+    <p>Saved in a separate file (e.g., <code>style.css</code>) and linked in the HTML head using the <code>&lt;link&gt;</code> tag. The best industry practice.</p>
+  </div>
+
+  <div class="priority-box">
+    <h4>Priority Order (Cascade Specificity):</h4>
+    <p>Inline CSS (Highest Priority) &gt; Internal CSS = External CSS (Last declared wins)</p>
+  </div>
+</div>
+
+</body>
+</html>

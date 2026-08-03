@@ -1,0 +1,135 @@
+/* 18. CSS Pseudo Elements Sandbox */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #334155;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 1. ::first-letter */
+.first-letter::first-letter {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #6366f1;
+  float: left;
+  line-height: 1;
+  margin-right: 8px;
+}
+
+/* 2. ::first-line */
+.first-line::first-line {
+  font-weight: bold;
+  color: #4f46e5;
+  text-decoration: underline;
+}
+
+/* 3. ::before */
+.before-demo::before {
+  content: "🎓 ";
+  font-size: 1.25rem;
+}
+
+/* 4. ::after */
+.after-demo::after {
+  content: " 🚀 (Highly Recommended!)";
+  color: #ec4899;
+  font-weight: bold;
+}
+
+/* 5. ::selection */
+.selection-demo::selection {
+  background-color: #fef08a;
+  color: #1e293b;
+}
+
+/* 6. ::marker */
+.marker-demo {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.marker-demo li::marker {
+  color: #10b981;
+  font-size: 1.2rem;
+  content: "⚡ ";
+}
+
+/* 7. ::placeholder */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+input[type="text"]:focus {
+  border-color: #6366f1;
+}
+
+input[type="text"]::placeholder {
+  color: #94a3b8;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* 8. ::file-selector-button */
+input[type="file"]::file-selector-button {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.15);
+  transition: background-color 0.2s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #4f46e5;
+}

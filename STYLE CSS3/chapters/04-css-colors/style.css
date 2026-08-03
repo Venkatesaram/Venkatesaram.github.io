@@ -1,0 +1,87 @@
+/* 04. CSS Colors */
+
+body {
+  font-family: -apple-system, system-ui, sans-serif;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.color-showcase {
+  max-width: 800px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #f8fafc;
+}
+
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.swatch {
+  background-color: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  border: 1px solid #334155;
+  transition: transform 0.2s;
+}
+
+.swatch:hover {
+  transform: translateY(-5px);
+}
+
+.color-box {
+  height: 120px;
+  width: 100%;
+}
+
+.details {
+  padding: 15px;
+}
+
+.details strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #94a3b8;
+}
+
+.details span {
+  font-family: monospace;
+  font-size: 13px;
+}
+
+/* Color Styles definitions */
+.name-color .color-box {
+  background-color: tomato; /* Named color constant */
+}
+
+.hex-color .color-box {
+  background-color: #6366f1; /* 6-digit hex string */
+}
+
+.rgb-color .color-box {
+  background-color: rgb(34, 197, 94); /* Red, Green, Blue integers */
+}
+
+.rgba-color .color-box {
+  background-color: rgba(239, 68, 68, 0.4); /* RGB with opacity parameter */
+}
+
+.hsl-color .color-box {
+  background-color: hsl(200, 95%, 50%); /* Hue, Saturation, Lightness */
+}
+
+.hsla-color .color-box {
+  background-color: hsla(280, 80%, 50%, 0.6); /* HSL with opacity */
+}

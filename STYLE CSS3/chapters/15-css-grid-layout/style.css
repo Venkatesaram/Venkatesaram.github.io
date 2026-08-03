@@ -1,0 +1,198 @@
+/* 15. CSS Grid Layout Sandbox */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.25rem;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #e2e8f0;
+  margin: 40px 0;
+}
+
+/* Base grid parent styling */
+.grid {
+  display: grid;
+  background-color: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+/* Base grid item styling */
+.grid > div {
+  background-color: #6366f1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  height: 50px;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.1);
+}
+
+/* 1. Basic Grid (2 Columns) */
+.basic-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* 2. Three Columns */
+.three-columns {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+/* 3. Grid Rows */
+.rows-grid {
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 70px 50px 80px;
+  gap: 10px;
+}
+.rows-grid > div {
+  height: 100%; /* let the row template decide height */
+}
+
+/* 4. Grid Gap */
+.gap-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* 5. Grid Column Span */
+.column-span {
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.span2 {
+  grid-column: span 2;
+  background-color: #06b6d4 !important;
+}
+
+/* 6. Grid Row Span */
+.row-span {
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 10px;
+}
+.row-span > div {
+  height: auto;
+  min-height: 50px;
+}
+.tall {
+  grid-row: span 3;
+  background-color: #a855f7 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 7. justify-items */
+.justify-items-demo {
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  gap: 10px;
+}
+.justify-items-demo > div {
+  width: 40px;
+  background-color: #ec4899 !important;
+}
+
+/* 8. align-items */
+.align-items-demo {
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  height: 100px;
+  gap: 10px;
+}
+.align-items-demo > div {
+  height: 40px;
+  background-color: #10b981 !important;
+}
+
+/* 9. Responsive Grid (repeat + minmax) */
+.responsive-grid {
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 15px;
+}
+
+/* 10. Grid Template Areas */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+  gap: 10px;
+  background-color: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.layout-grid > * {
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  text-align: center;
+}
+
+header {
+  grid-area: header;
+  background-color: #f59e0b;
+}
+
+nav {
+  grid-area: nav;
+  background-color: #0ea5e9;
+  min-height: 80px;
+}
+
+main {
+  grid-area: main;
+  background-color: #f43f5e;
+  min-height: 80px;
+}
+
+footer {
+  grid-area: footer;
+  background-color: #10b981;
+}

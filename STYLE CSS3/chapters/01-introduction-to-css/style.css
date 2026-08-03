@@ -1,0 +1,73 @@
+/* 01. Introduction to CSS */
+
+/* Simple Element Selector & Reset styling for our demo */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+}
+
+/* Class Selector styling a card component */
+.card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* CSS Declaration Block targeting h1 */
+h1 {
+  color: #1a73e8; /* Property: Value */
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 28px;
+}
+
+.subtitle {
+  color: #5f6368;
+  font-size: 16px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.description {
+  line-height: 1.6;
+  color: #4a4a4a;
+}
+
+.benefits h3 {
+  color: #202124;
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+/* styling lists inside the card */
+ul {
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+li {
+  color: #5f6368;
+}
+
+.note {
+  margin-top: 25px;
+  padding: 10px 15px;
+  background-color: #e8f0fe;
+  border-left: 4px solid #1a73e8;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 14px;
+  color: #1967d2;
+}

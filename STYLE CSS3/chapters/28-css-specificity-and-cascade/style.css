@@ -1,0 +1,171 @@
+/* 28. CSS Specificity & Cascade Sandbox */
+
+/* Define modern cascade layers */
+@layer base, theme, custom;
+
+@layer base {
+  .layer-target-box {
+    background-color: #ef4444; /* red (base - lowest layer priority) */
+    color: white;
+  }
+}
+
+@layer theme {
+  .layer-target-box {
+    background-color: #10b981; /* emerald (theme - middle layer priority) */
+    color: white;
+  }
+}
+
+@layer custom {
+  .layer-target-box {
+    background-color: #6366f1; /* indigo (custom - highest layer priority) */
+    color: white;
+  }
+}
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Common demo box base */
+#duel-box,
+#inline-id,
+.conflict-color,
+.important-class,
+.layer-target-box {
+  width: 220px;
+  height: 80px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* 1. Specificity Duel */
+/* Element level: Score 1 */
+.duel-element-tag {
+  background-color: #64748b; /* slate */
+  color: white;
+}
+
+/* Class level: Score 10 */
+.duel-class {
+  background-color: #6366f1; /* indigo */
+}
+
+/* ID level: Score 100 */
+#duel-box {
+  background-color: #10b981; /* emerald */
+}
+
+.score-legend {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 15px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.element-score { color: #64748b; }
+.class-score { color: #6366f1; }
+.id-score { color: #10b981; }
+
+/* 2. Inline Style Priority */
+.inline-class {
+  background-color: #ef4444;
+  color: white;
+}
+
+#inline-id {
+  background-color: #6366f1;
+}
+
+/* 3. Source Order */
+/* First rule in source: gets overridden because of order, not specificity */
+.conflict-color {
+  background-color: #3b82f6; /* blue */
+  color: white;
+}
+
+/* Last rule in source: wins! */
+.conflict-color {
+  background-color: #ef4444; /* red */
+  color: white;
+}
+
+/* 4. !important */
+.important-class {
+  background-color: #8b5cf6 !important; /* purple wins over yellow inline */
+  color: white;
+}
+
+/* 5. Inheritance */
+.parent-inherit-box {
+  border: 3px solid #6366f1; /* border is non-inherited */
+  padding: 15px;
+  border-radius: 8px;
+  width: 250px;
+  margin: 0 auto;
+  color: #a855f7; /* color is inherited */
+  font-weight: bold;
+}
+
+.child-inherit-box {
+  margin-top: 8px;
+  font-size: 12px;
+  /* inherits color: #a855f7 automatically, but does NOT inherit border */
+}

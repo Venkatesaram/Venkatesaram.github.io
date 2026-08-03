@@ -1,0 +1,161 @@
+/* 24. CSS Shadows Sandbox */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Common Demo Box */
+.demo {
+  width: 220px;
+  height: 120px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 15px;
+  font-weight: bold;
+  color: #1e293b;
+  transition: .4s;
+}
+
+/* 1. Soft Shadow */
+.shadow-soft {
+  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+}
+
+/* 2. Heavy Shadow */
+.shadow-heavy {
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+/* 3. Inset Shadow */
+.shadow-inset {
+  box-shadow: inset 0 0 20px rgba(0,0,0,.35);
+}
+
+/* 4. Glow Shadow */
+.shadow-glow {
+  background: #4f46e5;
+  color: white;
+  box-shadow: 
+    0 0 10px #6366f1,
+    0 0 30px #6366f1,
+    0 0 60px #6366f1;
+}
+
+/* 5. Multiple Shadows */
+.shadow-multiple {
+  box-shadow: 
+    0 4px 8px rgba(0,0,0,.15),
+    0 10px 25px rgba(0,0,0,.15),
+    0 20px 40px rgba(0,0,0,.12);
+}
+
+/* 6. Hover Elevation */
+.shadow-hover {
+  box-shadow: 0 5px 10px rgba(0,0,0,.15);
+}
+
+.shadow-hover:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 45px rgba(0,0,0,.30);
+}
+
+/* 7. Text Shadow */
+.text-shadow {
+  font-size: 60px;
+  text-align: center;
+  color: #4f46e5;
+  text-shadow: 3px 3px 6px rgba(0,0,0,.3);
+  margin: 10px 0;
+}
+
+/* 8. Glassmorphism */
+.glass-container-bg {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glass-card {
+  width: 250px;
+  margin: auto;
+  padding: 30px;
+  text-align: center;
+  background: rgba(255,255,255,.2);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.3);
+  box-shadow: 0 8px 30px rgba(0,0,0,.2);
+  color: white;
+  font-weight: bold;
+}
+
+/* 9. Neumorphism */
+.neumorphism {
+  width: 220px;
+  height: 120px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e5e7eb;
+  border-radius: 20px;
+  color: #475569;
+  font-weight: bold;
+  box-shadow: 
+    10px 10px 20px #cbd5e1,
+    -10px -10px 20px white;
+}

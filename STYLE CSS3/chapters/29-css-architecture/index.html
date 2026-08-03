@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>29. CSS Architecture (BEM) - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+  <h1>CSS Architecture (BEM) Playground</h1>
+
+  <!-- 1. The BEM Breakdown Card -->
+  <section class="card-demo">
+    <h2>1. BEM Component Structure</h2>
+    
+    <!-- Block element -->
+    <div class="product-card">
+      <!-- Element: media header -->
+      <div class="product-card__media">
+        <span class="product-card__tag">New Release</span>
+      </div>
+      <!-- Element: content area -->
+      <div class="product-card__content">
+        <!-- Element: title -->
+        <h3 class="product-card__title">Professional CSS course</h3>
+        <!-- Element: description -->
+        <p class="product-card__description">Learn BEM architecture, structural layout logic, cascade resolution, and dynamic animations.</p>
+        <!-- Element: footer -->
+        <div class="product-card__footer">
+          <span class="product-card__price">$49.99</span>
+          <button class="product-card__btn">Enroll Now</button>
+        </div>
+      </div>
+    </div>
+    
+    <p>A BEM Component: Block (<code>.product-card</code>), Elements (<code>.product-card__title</code>, <code>.product-card__price</code>), and nested states.</p>
+  </section>
+
+  <hr>
+
+  <!-- 2. Modifier Variations -->
+  <section class="card-demo">
+    <h2>2. BEM Modifiers (Variations)</h2>
+    
+    <!-- Block with Featured Modifier -->
+    <div class="product-card product-card--featured">
+      <div class="product-card__media">
+        <span class="product-card__tag">Best Seller</span>
+      </div>
+      <div class="product-card__content">
+        <h3 class="product-card__title">Enterprise CSS Architecture</h3>
+        <p class="product-card__description">Master architectural design patterns for large-scale production websites and component styling libraries.</p>
+        <div class="product-card__footer">
+          <span class="product-card__price">$89.99</span>
+          <!-- Button with element modifier -->
+          <button class="product-card__btn product-card__btn--accent">Get Premium</button>
+        </div>
+      </div>
+    </div>
+    
+    <p>Demonstrates modifier flags: <code>.product-card--featured</code> adjusts the border and glowing highlights, and <code>.product-card__btn--accent</code> shifts button colors.</p>
+  </section>
+
+  <hr>
+
+  <!-- 3. BEM Modifier States (e.g., Disabled/Secondary) -->
+  <section class="card-demo">
+    <h2>3. Modifier States</h2>
+    <div style="display: flex; gap: 15px; justify-content: center; margin: 15px 0;">
+      <!-- Block with modifier -->
+      <div class="alert-box">
+        <p class="alert-box__message">Normal Info Alert Box message.</p>
+      </div>
+      
+      <!-- Block with danger modifier -->
+      <div class="alert-box alert-box--danger">
+        <p class="alert-box__message">Critical System Alert Box message.</p>
+      </div>
+    </div>
+    <p>Using modifiers to signify semantic alert states: <code>.alert-box--danger</code> modifies colors, borders, and margins.</p>
+  </section>
+</div>
+
+</body>
+</html>

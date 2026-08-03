@@ -1,0 +1,96 @@
+/* 17. CSS Pseudo Classes */
+
+body {
+  font-family: sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  padding: 30px;
+}
+
+.sandbox {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+h1 {
+  text-align: center;
+  color: #0f172a;
+}
+
+.interactive-section {
+  margin: 25px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Hover, Focus, and Active Button style */
+.btn-primary {
+  display: inline-block;
+  background-color: #4f46e5;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: #3730a3; /* darker purple on hover */
+}
+
+.btn-primary:active {
+  background-color: #1e1b4b; /* darkest on click */
+}
+
+/* Input Focus outline modification */
+.input-focus {
+  padding: 10px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input-focus:focus {
+  border-color: #10b981; /* turns emerald green when editing */
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+/* Structural Selectors */
+.list-section {
+  margin-top: 30px;
+}
+
+.dynamic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.dynamic-list li {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Target FIRST element of list */
+.dynamic-list li:first-child {
+  font-weight: bold;
+  color: #4f46e5;
+}
+
+/* Target LAST element of list */
+.dynamic-list li:last-child {
+  border-bottom: 3px solid #ef4444;
+  color: #ef4444;
+}
+
+/* Stripe effect using nth-child selector (even / odd / math equations) */
+.dynamic-list li:nth-child(odd) {
+  background-color: #f1f5f9;
+}

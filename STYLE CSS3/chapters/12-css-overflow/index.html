@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12. CSS Overflow - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="overflow-container">
+  <h1>CSS Overflow Control</h1>
+  
+  <div class="grid">
+    <div class="card overflow-visible">
+      <h3>overflow: visible (Default)</h3>
+      <div class="content-box">
+        This box displays all content. Overflowing text pours out over elements below, which can ruin grid flows.
+      </div>
+    </div>
+
+    <div class="card overflow-hidden">
+      <h3>overflow: hidden</h3>
+      <div class="content-box">
+        This box clips overflow. Any text extending past the bounds is completely hidden from view.
+      </div>
+    </div>
+
+    <div class="card overflow-scroll">
+      <h3>overflow: scroll</h3>
+      <div class="content-box">
+        Adds scrollbars to both X and Y axes, regardless of whether the content overflows or not.
+      </div>
+    </div>
+
+    <div class="card overflow-auto">
+      <h3>overflow: auto</h3>
+      <div class="content-box">
+        Only adds scrollbars if the content exceeds the layout boundaries of the container box. Recommended!
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

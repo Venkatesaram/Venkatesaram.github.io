@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS3 Beginner to Pro – Interactive Course Hub</title>
+  <meta name="description" content="Master CSS3 from beginner to professional with practical examples, responsive layouts, and interactive visual code sandboxes.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="app-container" id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar-nav">
+      <div class="sidebar-header">
+        <div class="logo">
+          <span class="logo-icon">🎨</span>
+          <div class="logo-text">
+            <h2>CSS3 Hub</h2>
+            <span>Beginner to Pro</span>
+          </div>
+        </div>
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="Search topics..." autocomplete="off">
+          <span class="search-icon">🔍</span>
+        </div>
+      </div>
+      <nav class="chapter-list" id="chapter-list">
+        <!-- populated by JavaScript -->
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <button id="toggle-sidebar" class="icon-btn" aria-label="Toggle Navigation">☰</button>
+        <div class="active-chapter-title">
+          <h1 id="chapter-title">Loading Course...</h1>
+          <p id="chapter-desc">Select a topic from the sidebar to begin learning.</p>
+        </div>
+        <div class="top-actions">
+          <button id="theme-toggle" class="icon-btn" title="Toggle Light/Dark Theme">🌓</button>
+        </div>
+      </header>
+
+      <!-- Course Work Area -->
+      <section class="workspace">
+        <div class="workspace-header">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="preview" id="tab-preview">🖥️ Preview</button>
+            <button class="tab-btn" data-tab="html" id="tab-html">📄 HTML Source</button>
+            <button class="tab-btn" data-tab="css" id="tab-css">🎨 CSS Source</button>
+            <button class="tab-btn" data-tab="readme" id="tab-readme">📖 README / Theory</button>
+          </div>
+          <div class="actions" style="display: flex; gap: 12px; align-items: center;">
+            <span class="file-path" id="file-path-indicator">chapters/01-introduction-to-css/index.html</span>
+            <button id="copy-code-btn" class="copy-btn" title="Copy Code" style="display: none;">📋 Copy</button>
+          </div>
+        </div>
+
+        <!-- Tab content display panels -->
+        <div class="workspace-body">
+          <!-- 1. Live iframe Preview -->
+          <div class="tab-panel active" id="panel-preview">
+            <iframe id="preview-iframe" title="Interactive Chapter Preview" src="about:blank"></iframe>
+          </div>
+
+          <!-- 2. HTML Code display -->
+          <div class="tab-panel" id="panel-html">
+            <pre><code id="code-html" class="language-html">Select a chapter to load HTML...</code></pre>
+          </div>
+
+          <!-- 3. CSS Code display -->
+          <div class="tab-panel" id="panel-css">
+            <pre><code id="code-css" class="language-css">Select a chapter to load CSS...</code></pre>
+          </div>
+
+          <!-- 4. Markdown README display -->
+          <div class="tab-panel markdown-body" id="panel-readme">
+            <div id="readme-content">Select a chapter to load README...</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- App Scripts -->
+  <script src="course_data.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* 13. CSS Units */
+
+/* Setting root html font-size = 16px as standard */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  padding: 30px;
+  margin: 0;
+}
+
+.units-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+}
+
+.units-group {
+  margin: 25px 0;
+  padding: 15px;
+  background: #f1f5f9;
+  border-radius: 6px;
+}
+
+.units-group h3 {
+  margin-top: 0;
+  font-size: 15px;
+  color: #64748b;
+}
+
+.unit-box {
+  background-color: #4f46e5;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+/* 1. Absolute px */
+.box-px {
+  width: 250px;
+}
+
+/* 2. Parent-relative % */
+.parent-bar {
+  background-color: #cbd5e1;
+  padding: 5px;
+  border-radius: 4px;
+}
+.box-percent {
+  width: 70%;
+  background-color: #10b981;
+}
+
+/* 3. em and rem configurations */
+.font-parent {
+  font-size: 20px; /* Overrides current container font size */
+  color: #1e293b;
+}
+
+.box-em {
+  width: 10em; /* 10 times parent font size = 200px */
+  background-color: #f59e0b;
+  margin: 10px 0;
+}
+
+.box-rem {
+  width: 10rem; /* 10 times root html font size = 160px */
+  background-color: #ef4444;
+}
+
+/* 4. Viewport units */
+.box-vw {
+  width: 20vw; /* 20% of viewport width */
+  background-color: #8b5cf6;
+  margin-bottom: 10px;
+}
+
+.box-vh {
+  height: 10vh; /* 10% of viewport height */
+  width: 150px;
+  background-color: #ec4899;
+}

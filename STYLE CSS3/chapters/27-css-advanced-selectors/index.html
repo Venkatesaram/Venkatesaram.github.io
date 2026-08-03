@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>27. CSS Advanced Selectors - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+  <h1>CSS Advanced Selectors Playground</h1>
+
+  <!-- 1. Advanced Attribute Selectors & Data Attributes -->
+  <section class="card">
+    <h2>1. Attribute & Data Selectors (^=, $=, *=)</h2>
+    <div style="display: flex; flex-direction: column; gap: 8px; align-items: center; margin: 15px 0;">
+      <a href="https://example.com" class="attr-link" data-type="external-sec">Secure External Link (ends in .com, starts with https)</a>
+      <a href="http://example.org" class="attr-link" data-type="external-unsec">Unsecure Org Link (ends in .org, starts with http)</a>
+      <a href="/downloads/report.pdf" class="attr-link" data-type="internal-download">PDF Report Download (contains /downloads/)</a>
+    </div>
+    <p>Styles anchors automatically based on URL protocols, suffixes, or substring data-types.</p>
+  </section>
+
+  <hr>
+
+  <!-- 2. Multiple Classes & Selector Chaining -->
+  <section class="card">
+    <h2>2. Multiple Class Selection & Chaining</h2>
+    <div style="display: flex; justify-content: center; gap: 10px; margin: 15px 0;">
+      <span class="badge">Normal Badge</span>
+      <span class="badge primary">Primary Badge</span>
+      <span class="badge primary outline">Primary Outlined Badge</span>
+    </div>
+    <p>Demonstrates chained selectors (e.g. <code>.badge.primary.outline</code>) which target elements that have all specified classes.</p>
+  </section>
+
+  <hr>
+
+  <!-- 3. Advanced nth-child & nth-of-type Patterns -->
+  <section class="card">
+    <h2>3. :nth-child() & :nth-of-type() Patterns</h2>
+    <div class="list-grid">
+      <ul class="nth-child-list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+        <li>Item 4</li>
+        <li>Item 5</li>
+        <li>Item 6</li>
+      </ul>
+      <div class="type-container">
+        <span>Span 1</span>
+        <p>Paragraph 1</p>
+        <span>Span 2</span>
+        <p>Paragraph 2</p>
+      </div>
+    </div>
+    <p>Shows formula-based zebra striping (e.g. <code>:nth-child(2n)</code>) and targets types regardless of siblings using <code>:nth-of-type()</code>.</p>
+  </section>
+
+  <hr>
+
+  <!-- 4. first-of-type, last-of-type, only-child, only-of-type -->
+  <section class="card">
+    <h2>4. Type & Child Limits</h2>
+    <div class="limits-grid">
+      <div class="type-limits">
+        <p class="limit-p">First Paragraph (first-of-type)</p>
+        <p class="limit-p">Middle Paragraph</p>
+        <p class="limit-p">Last Paragraph (last-of-type)</p>
+      </div>
+      <div class="single-child-container">
+        <div class="only-child-box">I am an only-child!</div>
+      </div>
+    </div>
+    <p>Highlights children depending on order limits (<code>:first-of-type</code>, <code>:last-of-type</code>) or isolation (<code>:only-child</code>).</p>
+  </section>
+
+  <hr>
+
+  <!-- 5. Modern :has() Parent Selector -->
+  <section class="card">
+    <h2>5. Modern :has() Parent Selector</h2>
+    <div class="parent-has-card">
+      <h4>Parent Container</h4>
+      <p>I get a special background/border style because I contain an active warning element below!</p>
+      <div class="warning-badge">⚠️ Active Alert</div>
+    </div>
+    <p>A CSS3 gamechanger: <code>.parent-has-card:has(.warning-badge)</code> styles the parent element based on its descendants.</p>
+  </section>
+
+  <hr>
+
+  <!-- 6. is() & where() Selectors -->
+  <section class="card">
+    <h2>6. :is() & :where() Selectors</h2>
+    <div class="group-selectors-container">
+      <article>
+        <h3>Article Title</h3>
+        <p>Article content paragraph.</p>
+      </article>
+      <aside>
+        <h3>Aside Title</h3>
+        <p>Aside content paragraph.</p>
+      </aside>
+    </div>
+    <p>Reduces selector repetition. <code>:is()</code> applies standard specificity, whereas <code>:where()</code> keeps specificity at 0.</p>
+  </section>
+
+  <hr>
+
+  <!-- 7. Advanced :not() Selector -->
+  <section class="card">
+    <h2>7. Advanced :not() Exclusions</h2>
+    <div class="exclusion-container">
+      <button class="styled-btn">Normal Button</button>
+      <button class="styled-btn disabled">Disabled Button</button>
+      <button class="styled-btn special">Special Button</button>
+    </div>
+    <p>Uses negative selector lists: <code>.styled-btn:not(.disabled):not(.special)</code> to select buttons lacking both states.</p>
+  </section>
+</div>
+
+</body>
+</html>

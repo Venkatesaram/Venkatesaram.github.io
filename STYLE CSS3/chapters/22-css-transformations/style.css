@@ -1,0 +1,322 @@
+/* 22. CSS Transformations Sandbox */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Base box representation */
+.demo-box-container {
+  width: 150px;
+  height: 100px;
+  background-color: #e2e8f0;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 100px;
+  height: 80px;
+  background-color: #6366f1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  transition: transform 0.4s, background-color 0.4s;
+}
+
+/* 1. rotate() */
+.card-rotate:hover .box {
+  transform: rotate(45deg);
+}
+
+/* 2. scale() */
+.card-scale:hover .box {
+  transform: scale(1.2);
+}
+
+/* 3. translateX() */
+.card-translatex:hover .box {
+  transform: translateX(80px);
+}
+
+/* 4. translateY() */
+.card-translatey:hover .box {
+  transform: translateY(-40px);
+}
+
+/* 5. translate() */
+.card-translate:hover .box {
+  transform: translate(60px, -20px);
+}
+
+/* 6. skewX() */
+.card-skewx:hover .box {
+  transform: skewX(20deg);
+}
+
+/* 7. skewY() */
+.card-skewy:hover .box {
+  transform: skewY(20deg);
+}
+
+/* 8. skew() */
+.card-skew:hover .box {
+  transform: skew(20deg, 10deg);
+}
+
+/* 9. rotateX() */
+.card-rotatex:hover .box {
+  transform: rotateX(180deg);
+}
+
+/* 10. rotateY() */
+.card-rotatey:hover .box {
+  transform: rotateY(180deg);
+}
+
+/* 11. rotateZ() */
+.card-rotatez:hover .box {
+  transform: rotateZ(180deg);
+}
+
+/* 12. transform-origin */
+.origin-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.origin-box-wrapper {
+  text-align: center;
+}
+
+.origin-label {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.box-origin {
+  transition: transform 0.8s;
+}
+
+.origin-center:hover .box-origin {
+  transform-origin: center;
+  transform: rotate(45deg);
+}
+
+.origin-left-top:hover .box-origin {
+  transform-origin: left top;
+  transform: rotate(45deg);
+}
+
+.origin-right-bottom:hover .box-origin {
+  transform-origin: right bottom;
+  transform: rotate(45deg);
+}
+
+/* 13. Multiple Transform Functions */
+.card-multiple:hover .box {
+  transform: translateY(-20px) rotate(20deg) scale(1.2) skew(8deg);
+  background-color: #db2777;
+}
+
+/* 14. Hover Card Effect */
+.hover-card {
+  width: 200px;
+  height: 120px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hover-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+}
+
+.hover-card h4 {
+  margin: 0 0 8px 0;
+  color: #1e293b;
+}
+
+.hover-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* 15. Button Click Effect */
+.click-btn {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.15);
+  transition: transform 0.1s;
+}
+
+.click-btn:active {
+  transform: scale(0.95);
+}
+
+/* 16. Image Zoom */
+.zoom-wrapper {
+  width: 200px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.zoom-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.zoom-wrapper:hover .zoom-img {
+  transform: scale(1.15);
+}
+
+/* 17. Floating Icon */
+.floating-icon {
+  font-size: 2.5rem;
+  display: inline-block;
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 18. 3D Flip Card */
+.flip-card {
+  background-color: transparent;
+  width: 150px;
+  height: 100px;
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.flip-card-front {
+  background-color: #6366f1;
+  color: white;
+}
+
+.flip-card-back {
+  background-color: #ec4899;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* 19. Loading Spinner */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e2e8f0;
+  border-top: 5px solid #a855f7;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

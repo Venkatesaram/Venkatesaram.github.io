@@ -1,0 +1,622 @@
+/* CSS3 Hub Dashboard Stylesheet */
+
+/* -------------------------------------------------------------
+   01. DESIGN SYSTEM & ROOT VARIABLES
+   ------------------------------------------------------------- */
+:root {
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+
+  /* HSL Neon Slate Color Palette */
+  --bg-app: #080b11;
+  --bg-sidebar: rgba(13, 18, 30, 0.7);
+  --bg-panel: rgba(20, 26, 43, 0.65);
+  --bg-panel-solid: #0d121e;
+  
+  --border-glass: rgba(255, 255, 255, 0.08);
+  --border-focus: #6366f1;
+  
+  --color-primary: #6366f1;     /* Indigo */
+  --color-secondary: #06b6d4;   /* Cyan */
+  --color-accent: #a855f7;      /* Purple */
+  --color-accent-glow: rgba(168, 85, 247, 0.2);
+  
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+
+  --sidebar-width: 320px;
+  --topbar-height: 80px;
+  
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+
+  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-glow: 0 0 20px rgba(99, 102, 241, 0.35);
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Code Highlighter variables - Dark Theme defaults */
+  --code-bg: rgba(0, 0, 0, 0.25);
+  --code-text: #94a3b8;
+  --code-comment: #5f7a94;
+  --code-tag: #ec4899;
+  --code-attr: #facc15;
+  --code-val: #10b981;
+  --code-selector: #a855f7;
+  --code-property: #38bdf8;
+  --code-p-val: #e2e8f0;
+}
+
+/* Light Theme overrides */
+[data-theme="light"] {
+  --bg-app: #f3f4f6;
+  --bg-sidebar: rgba(255, 255, 255, 0.75);
+  --bg-panel: rgba(255, 255, 255, 0.85);
+  --bg-panel-solid: #ffffff;
+  
+  --border-glass: rgba(0, 0, 0, 0.08);
+  --border-focus: #4f46e5;
+  
+  --color-primary: #4f46e5;
+  --color-secondary: #0891b2;
+  --color-accent: #7c3aed;
+  --color-accent-glow: rgba(124, 58, 237, 0.1);
+  
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --text-dim: #9ca3af;
+  
+  --shadow-main: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.15);
+
+  /* Code Highlighter variables - Light Theme overrides */
+  --code-bg: #f8fafc;
+  --code-text: #334155;
+  --code-comment: #64748b;
+  --code-tag: #be185d;
+  --code-attr: #b45309;
+  --code-val: #047857;
+  --code-selector: #7c3aed;
+  --code-property: #0369a1;
+  --code-p-val: #1e293b;
+}
+
+/* -------------------------------------------------------------
+   02. BASE RESETS & SCROLLBAR
+   ------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  min-height: 100vh;
+  overflow: hidden;
+  transition: background-color var(--transition-normal);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* -------------------------------------------------------------
+   03. LAYOUT & GLASSMORPHISM
+   ------------------------------------------------------------- */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.05) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  transition: transform var(--transition-normal), background-color var(--transition-normal);
+}
+
+/* Main Area styling */
+.main-content {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------
+   04. SIDEBAR ELEMENT COMPONENTS
+   ------------------------------------------------------------- */
+.sidebar-header {
+  padding: 24px;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px var(--color-primary));
+}
+
+.logo-text h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, var(--text-main) 30%, var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-text span {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Search bar styling */
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 11px 16px 11px 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+
+.search-box input:focus {
+  border-color: var(--border-focus);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.15);
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+/* Chapter Menu lists */
+.chapter-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Chapter Items */
+.chapter-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: left;
+}
+
+.chapter-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-main);
+  transform: translateX(4px);
+}
+
+.chapter-item.active {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.25);
+  color: var(--text-main);
+  box-shadow: inset 0 0 8px rgba(99, 102, 241, 0.1);
+}
+
+.chapter-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(99, 102, 241, 0.15);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  min-width: 32px;
+  text-align: center;
+}
+
+.chapter-item.active .chapter-number {
+  background: var(--color-primary);
+  color: white;
+  box-shadow: var(--shadow-glow);
+}
+
+.chapter-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* -------------------------------------------------------------
+   05. TOP NAVIGATION BAR
+   ------------------------------------------------------------- */
+.top-bar {
+  height: var(--topbar-height);
+  padding: 0 40px;
+  border-bottom: 1px solid var(--border-glass);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8, 11, 17, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#toggle-sidebar {
+  display: none; /* Desktop hidden */
+}
+
+.active-chapter-title h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.active-chapter-title p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-glass);
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------
+   06. INTERACTIVE WORKSPACE AREA
+   ------------------------------------------------------------- */
+.workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 40px 40px 40px;
+  overflow: hidden;
+}
+
+.workspace-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 12px;
+}
+
+/* Tabs buttons */
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.tab-btn:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.tab-btn.active {
+  color: var(--text-main);
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border-glass);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.file-path {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid var(--border-glass);
+}
+
+/* Copy button styling */
+.copy-btn {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+  outline: none;
+}
+
+.copy-btn:hover {
+  background: var(--border-focus);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+.copy-btn:active {
+  transform: translateY(0);
+}
+
+.copy-btn.copied {
+  background: #10b981; /* Success Green */
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+
+/* Panels */
+.workspace-body {
+  flex: 1;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-main);
+  overflow: hidden;
+  position: relative;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-panel {
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 24px;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Live Iframe */
+#preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: white;
+  border-radius: var(--radius-md);
+}
+
+/* Code Syntax display */
+pre {
+  background: var(--code-bg);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  overflow: auto;
+  border: 1px solid var(--border-glass);
+  height: 100%;
+  transition: background-color var(--transition-normal);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--code-text);
+  display: block;
+  white-space: pre;
+  transition: color var(--transition-normal);
+}
+
+/* -------------------------------------------------------------
+   07. SIMPLE CUSTOM SOURCE CODE FORMATTING STYLES
+   ------------------------------------------------------------- */
+.code-comment { color: var(--code-comment); font-style: italic; }
+.code-tag { color: var(--code-tag); font-weight: 500; }
+.code-attr { color: var(--code-attr); }
+.code-val { color: var(--code-val); }
+.code-selector { color: var(--code-selector); font-weight: 600; }
+.code-property { color: var(--code-property); }
+.code-p-val { color: var(--code-p-val); }
+
+/* -------------------------------------------------------------
+   08. README / THEORY RICH LAYOUT
+   ------------------------------------------------------------- */
+.markdown-body {
+  color: var(--text-main);
+  line-height: 1.7;
+}
+
+.markdown-body h1, 
+.markdown-body h2, 
+.markdown-body h3 {
+  color: var(--text-main);
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.markdown-body h1 { font-size: 24px; border-bottom: 1px solid var(--border-glass); padding-bottom: 8px; }
+.markdown-body h2 { font-size: 18px; }
+.markdown-body h3 { font-size: 15px; }
+
+.markdown-body p {
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.markdown-body code {
+  display: inline;
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+  color: var(--color-secondary);
+}
+
+.markdown-body pre {
+  margin: 15px 0;
+  height: auto;
+  background: var(--code-bg);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-glass);
+  padding: 16px;
+  transition: background-color var(--transition-normal);
+}
+
+.markdown-body pre code {
+  display: block;
+  background: transparent;
+  color: var(--code-text);
+  transition: color var(--transition-normal);
+}
+
+.markdown-body ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+}
+
+.markdown-body li {
+  margin: 6px 0;
+}
+
+/* -------------------------------------------------------------
+   09. RESPONSIVE MEDIA QUERIES BREAKPOINTS
+   ------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    transform: translateX(-100%); /* offscreen */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* slide in */
+  }
+
+  #toggle-sidebar {
+    display: flex; /* show on mobile screens */
+    margin-right: 15px;
+  }
+
+  .workspace {
+    padding: 16px 20px 20px 20px;
+  }
+
+  .top-bar {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .workspace-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .tabs {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  
+  .tab-btn {
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  
+  .file-path {
+    display: none; /* Hide path on mobile */
+  }
+}

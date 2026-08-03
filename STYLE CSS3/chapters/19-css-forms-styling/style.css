@@ -1,0 +1,96 @@
+/* 19. CSS Forms Styling */
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #0f172a;
+  color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  margin: 0;
+}
+
+.form-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+/* Modern Input and Select controls styling */
+.form-group input, 
+.form-group select {
+  background-color: #0f172a;
+  border: 2px solid #334155;
+  color: white;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Placeholder coloring customizer styling */
+.form-group input::placeholder {
+  color: #475569;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #6366f1; /* Indigo color focus highlight */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  font-size: 13px;
+}
+
+/* Button style */
+.submit-btn {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #4f46e5;
+}

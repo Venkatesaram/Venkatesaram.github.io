@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>28. CSS Specificity & Cascade - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+  <h1>CSS Specificity & Cascade Playground</h1>
+
+  <!-- 1. Specificity Score Duel -->
+  <section class="card">
+    <h2>1. Specificity Duel (Element vs Class vs ID)</h2>
+    <div id="duel-box" class="duel-class duel-element-tag">
+      Target Box
+    </div>
+    <div class="score-legend">
+      <span class="element-score">div (Score 1)</span>
+      <span class="class-score">.duel-class (Score 10)</span>
+      <span class="id-score">#duel-box (Score 100)</span>
+    </div>
+    <p>Target styled by element, class, and ID rules. The ID rule (emerald) overrides class (indigo) and element (slate) because it has higher specificity weight (100 vs 10 vs 1).</p>
+  </section>
+
+  <hr>
+
+  <!-- 2. Inline Style Priority -->
+  <section class="card">
+    <h2>2. Inline Style Override (Score 1000)</h2>
+    <div id="inline-id" class="inline-class" style="background-color: #f59e0b; color: white;">
+      Inline Override
+    </div>
+    <p>Inline styles (Score 1000) override external stylesheet ID, class, and element rules directly from the HTML markup.</p>
+  </section>
+
+  <hr>
+
+  <!-- 3. Source Order Cascade -->
+  <section class="card">
+    <h2>3. Source Order Rule (Last Rule Wins)</h2>
+    <div class="conflict-color">
+      Conflict Box
+    </div>
+    <p>Both competing classes have identical specificity scores (10). The browser resolves this conflict by applying the rule written last in the CSS sheet cascade order (red overrides blue).</p>
+  </section>
+
+  <hr>
+
+  <!-- 4. !important Rule -->
+  <section class="card">
+    <h2>4. The !important Nuclear Option</h2>
+    <div class="important-class" style="background-color: #f59e0b; color: white;">
+      !important Box
+    </div>
+    <p>Even though an inline style defines the background as yellow, the <code>!important</code> flag on the stylesheet's background rule overrides it completely.</p>
+  </section>
+
+  <hr>
+
+  <!-- 5. Inherited vs Non-Inherited -->
+  <section class="card">
+    <h2>5. CSS Inheritance</h2>
+    <div class="parent-inherit-box">
+      I am the Parent Card
+      <p class="child-inherit-box">I am the Child Paragraph</p>
+    </div>
+    <p>Inherited properties like <code>color</code> cascade down to child nodes automatically. Non-inherited properties like <code>border</code> do not pass down and must be defined manually.</p>
+  </section>
+
+  <hr>
+
+  <!-- 6. Cascade Layers (@layer) -->
+  <section class="card">
+    <h2>6. Cascade Layers (@layer)</h2>
+    <div class="layer-target-box">
+      Layer Target Box
+    </div>
+    <p>Demonstrates modern CSS Layers: <code>@layer base, theme, custom;</code>. The custom layer override wins even though all classes have equal selector specificity.</p>
+  </section>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>30. Final Capstone Project - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="c-portfolio">
+  <!-- Responsive Navigation -->
+  <nav class="c-navbar">
+    <div class="c-navbar__brand">DevShowcase</div>
+    <ul class="c-navbar__menu">
+      <li class="c-navbar__item"><a href="#hero" class="c-navbar__link c-navbar__link--active">Home</a></li>
+      <li class="c-navbar__item"><a href="#services" class="c-navbar__link">Services</a></li>
+      <li class="c-navbar__item"><a href="#portfolio" class="c-navbar__link">Work</a></li>
+      <li class="c-navbar__item"><a href="#contact" class="c-navbar__link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="c-hero" id="hero">
+    <div class="c-hero__content">
+      <span class="c-hero__tag">Available for Projects</span>
+      <h1 class="c-hero__title">Building Elegant Digital Experiences</h1>
+      <p class="c-hero__desc">I am a frontend developer specializing in scalable design systems, responsive grid structures, and interactive animations.</p>
+      <div class="c-hero__actions">
+        <a href="#contact" class="c-hero__btn c-hero__btn--primary">Start A Project</a>
+        <a href="#portfolio" class="c-hero__btn c-hero__btn--secondary">View Work</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Grid Section -->
+  <section class="c-services" id="services">
+    <h2 class="c-services__title">My Core Services</h2>
+    <div class="c-services__grid">
+      <div class="c-services__card">
+        <div class="c-services__icon">💻</div>
+        <h3 class="c-services__name">Web Design</h3>
+        <p class="c-services__desc">Crafting modern desktop, tablet, and mobile-first responsive web solutions.</p>
+      </div>
+
+      <div class="c-services__card">
+        <div class="c-services__icon">⚡</div>
+        <h3 class="c-services__name">Load Optimization</h3>
+        <p class="c-services__desc">Analyzing and improving layout performance parameters for premium page speed.</p>
+      </div>
+
+      <div class="c-services__card">
+        <div class="c-services__icon">🛠️</div>
+        <h3 class="c-services__name">Clean CSS Systems</h3>
+        <p class="c-services__desc">Constructing modular, reusable styling sheets using variables, functions, and BEM architecture.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="c-work" id="portfolio">
+    <h2 class="c-work__title">Featured Projects</h2>
+    <div class="c-work__grid">
+      <!-- Card 1 -->
+      <div class="c-work__card">
+        <div class="c-work__media">
+          <div class="c-work__overlay">View Details</div>
+        </div>
+        <div class="c-work__content">
+          <span class="c-work__tag">Grid System</span>
+          <h4 class="c-work__name">SaaS Dashboard Console</h4>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="c-work__card">
+        <div class="c-work__media c-work__media--purple">
+          <div class="c-work__overlay">View Details</div>
+        </div>
+        <div class="c-work__content">
+          <span class="c-work__tag">Flexbox & Transition</span>
+          <h4 class="c-work__name">Crypto Wallet WebApp</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="c-contact" id="contact">
+    <div class="c-contact__box">
+      <h2 class="c-contact__title">Let's Collaborate</h2>
+      <p class="c-contact__desc">Let's build something amazing together! Get in touch regarding your upcoming project.</p>
+      
+      <form class="c-contact__form" onsubmit="event.preventDefault(); alert('Inquiry sent successfully!');">
+        <div class="c-contact__row">
+          <div class="c-contact__group">
+            <input type="text" class="c-contact__input" placeholder="Your Name" required id="name-input"/>
+          </div>
+          <div class="c-contact__group">
+            <input type="email" class="c-contact__input" placeholder="Your Email" required id="email-input"/>
+          </div>
+        </div>
+        <textarea rows="5" class="c-contact__textarea" placeholder="Project Description..." required id="desc-input"></textarea>
+        <button type="submit" class="c-contact__submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="c-footer">
+    <p class="c-footer__text">&copy; 2026 DevShowcase. Built with pure HTML5, CSS3, and BEM Architecture.</p>
+  </footer>
+</div>
+
+</body>
+</html>

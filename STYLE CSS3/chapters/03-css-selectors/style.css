@@ -1,0 +1,214 @@
+/* 03. CSS Selectors Sandbox */
+
+/* 1. Universal Selector - targets EVERY element to set box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* 2. Element Selector - styles h1 globally */
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+/* 3. Class Selector - styles class="note" */
+.note {
+  background-color: #fef3c7;
+  color: #b45309;
+  padding: 8px 12px;
+  border-left: 4px solid #d97706;
+  border-radius: 4px;
+}
+
+/* 4. ID Selector - styles unique id="message" */
+#message {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* 5. Group Selector - styles h3, p, div together in group sandbox */
+.group-section h3, 
+.group-section p, 
+.group-section div {
+  color: #475569;
+  border: 1px dashed #cbd5e1;
+  padding: 6px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+}
+
+/* 6. Descendant Selector (space) - styles p inside .parent */
+.parent p {
+  color: #0284c7;
+  font-weight: 500;
+}
+
+/* 7. Child Selector (>) - styles direct child p inside .box */
+.box > p {
+  color: #be185d;
+  font-weight: bold;
+}
+
+/* 8. Adjacent Sibling Selector (+) - styles first p immediately after h3 */
+h3 + p {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 6px;
+  border-radius: 4px;
+}
+
+/* 9. General Sibling Selector (~) - styles all p siblings after h4 */
+h4 ~ p {
+  color: #7c3aed;
+  text-decoration: underline;
+}
+
+/* 10. Attribute Selector - styles inputs with attribute "type" */
+input[type] {
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin-right: 8px;
+}
+
+/* 11. Attribute = Value - styles matching href values */
+a[href="https://google.com"] {
+  color: #ea4335;
+  font-weight: bold;
+}
+a[href="https://openai.com"] {
+  color: #10a37f;
+  font-weight: bold;
+}
+
+/* 12. :first-child - styles first li item */
+ul li:first-child {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* 13. :last-child - styles last li item */
+ul li:last-child {
+  color: #dc2626;
+  font-weight: bold;
+}
+
+/* 14. :nth-child() - styles alternating rows */
+ol li:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+/* 15. :hover - button interactive hover state */
+button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+button:hover {
+  background-color: #3730a3;
+  transform: scale(1.05);
+}
+
+/* 16. :focus - input highlight */
+input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+/* 17. :checked - checkbox status styling */
+input[type="checkbox"]:checked {
+  accent-color: #10b981;
+}
+
+/* 18. :disabled */
+input:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+
+/* 19. :enabled */
+input:enabled {
+  background-color: #fefefe;
+}
+
+/* 20. :empty - empty box selector styling */
+.empty-box {
+  width: 60px;
+  height: 60px;
+  background-color: #f3f4f6;
+  border: 1px dashed #9ca3af;
+}
+.empty-box:empty {
+  background-color: #fecaca;
+  border-color: #ef4444;
+}
+
+/* 21. :not() - p that is NOT .success */
+p:not(.success) {
+  color: #ef4444;
+}
+p.success {
+  color: #10b981;
+}
+
+/* 22. ::before - prefix text injector */
+.before-example::before {
+  content: "🎓 Welcome ";
+  font-weight: bold;
+  color: #0369a1;
+}
+
+/* 23. ::after - suffix text injector */
+.after-example::after {
+  content: " (Latest)";
+  color: #059669;
+  font-size: 12px;
+}
+
+/* 24. ::first-letter */
+.letter::first-letter {
+  font-size: 200%;
+  color: #4f46e5;
+  font-weight: bold;
+}
+
+/* 25. ::first-line */
+.line::first-line {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #b45309;
+}

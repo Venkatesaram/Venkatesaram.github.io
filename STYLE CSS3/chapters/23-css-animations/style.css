@@ -1,0 +1,328 @@
+/* 23. CSS Animations Sandbox */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Base box representation */
+.demo-box-container {
+  width: 150px;
+  height: 100px;
+  background-color: #e2e8f0;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 80px;
+  height: 60px;
+  background-color: #6366f1;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 12px;
+  user-select: none;
+}
+
+/* 1. Pulse */
+.anim-pulse {
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* 2. Spinner Loader */
+.spinner-loader {
+  width: 45px;
+  height: 45px;
+  border: 4px solid #e2e8f0;
+  border-top: 4px solid #a855f7;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 3. Bounce */
+.anim-bounce {
+  animation: bounce 0.8s ease infinite alternate;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-25px); }
+}
+
+/* 4. Fade In */
+.anim-fadein {
+  animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* 5. Slide From Left */
+.anim-slidein {
+  animation: slideIn 2s ease-in-out infinite alternate;
+}
+
+@keyframes slideIn {
+  0% { transform: translateX(-180px); }
+  100% { transform: translateX(180px); }
+}
+
+/* 6. Rotate */
+.anim-rotate {
+  font-size: 1.5rem;
+  background-color: #f59e0b;
+  animation: spin 2s linear infinite;
+}
+
+/* 7. Shake */
+.input-shake {
+  padding: 8px 16px;
+  border: 2px solid #ef4444;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-radius: 6px;
+  font-weight: bold;
+  text-align: center;
+  outline: none;
+  animation: shake 0.5s ease infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* 8. Floating */
+.floating-illustration {
+  font-size: 2.5rem;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* 9. Progress Bar */
+.progress-bar-container {
+  width: 200px;
+  height: 16px;
+  background-color: #e2e8f0;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid #cbd5e1;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0;
+  background-color: #10b981;
+  animation: progress 3s ease infinite;
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* 10. Typing Effect */
+.typing-container {
+  display: inline-block;
+}
+
+.typing-text {
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1e293b;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #4f46e5;
+  width: 0;
+  animation: typing 3s steps(10) infinite;
+}
+
+@keyframes typing {
+  0%, 100% { width: 0; }
+  50% { width: 100%; }
+}
+
+/* 11. Loading Dots */
+.dots-container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #6366f1;
+  border-radius: 50%;
+  animation: bounceDot 1.2s infinite ease-in-out;
+}
+
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounceDot {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 12. Notification Bell */
+.bell-icon {
+  font-size: 2.2rem;
+  animation: bellshake 1s ease infinite;
+  transform-origin: top center;
+}
+
+@keyframes bellshake {
+  0%, 100% { transform: rotate(0); }
+  15% { transform: rotate(15deg); }
+  30% { transform: rotate(-15deg); }
+  45% { transform: rotate(10deg); }
+  60% { transform: rotate(-10deg); }
+  75% { transform: rotate(4deg); }
+  85% { transform: rotate(-4deg); }
+}
+
+/* 13. Heart Beat */
+.heart-icon {
+  font-size: 2.2rem;
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  20% { transform: scale(1.25); }
+  40% { transform: scale(1); }
+  60% { transform: scale(1.25); }
+  80%, 100% { transform: scale(1); }
+}
+
+/* 14. Card Hover Animation */
+.hover-card-anim {
+  width: 220px;
+  height: 120px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 0 auto;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+  text-align: left;
+}
+
+.hover-card-anim:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+  animation: border-pulse 1.5s infinite;
+}
+
+@keyframes border-pulse {
+  0%, 100% { border-color: #e2e8f0; }
+  50% { border-color: #6366f1; }
+}
+
+.hover-card-anim h4 {
+  margin: 0 0 8px 0;
+  color: #1e293b;
+}
+
+.hover-card-anim p {
+  margin: 0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* 15. Button Click Animation */
+.action-btn {
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(99, 102, 241, 0.15);
+  transition: transform 0.1s;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}

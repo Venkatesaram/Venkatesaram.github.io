@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>08. CSS Box Model - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="box-model-container">
+  <h1>CSS Box Model Visualizer</h1>
+  
+  <div class="box-wrapper content-box-mode">
+    <h3>box-sizing: content-box (Default)</h3>
+    <p>Width = 200px + 20px padding + 5px border = 250px total! Height expands outwards from the dimensions set.</p>
+    <div class="demo-box content-box">
+      Content Box
+    </div>
+  </div>
+
+  <div class="box-wrapper border-box-mode">
+    <h3>box-sizing: border-box (Recommended)</h3>
+    <p>Width = 200px (padding and border are absorbed inside!). Easier to plan layouts.</p>
+    <div class="demo-box border-box">
+      Border Box
+    </div>
+  </div>
+  
+  <div class="interactive-legend">
+    <span class="legend-margin">Margin</span>
+    <span class="legend-border">Border</span>
+    <span class="legend-padding">Padding</span>
+    <span class="legend-content">Content</span>
+  </div>
+</div>
+
+</body>
+</html>

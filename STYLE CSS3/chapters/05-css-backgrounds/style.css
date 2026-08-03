@@ -1,0 +1,73 @@
+/* 05. CSS Backgrounds */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f7;
+  color: #333;
+}
+
+.content-wrapper {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #111;
+  margin-bottom: 30px;
+}
+
+.background-card {
+  margin-bottom: 25px;
+  padding: 40px 30px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+/* Linear Gradient Color styling */
+.color-bg {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+}
+
+/* Background image with cover sizing and centering */
+.image-bg {
+  background-color: #222; /* Fallback color */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400"><rect width="800" height="400" fill="%234338ca"/><circle cx="400" cy="200" r="150" fill="%23ec4899" opacity="0.3"/><path d="M 0,300 Q 200,100 400,300 T 800,300" stroke="%2338bdf8" stroke-width="8" fill="none" opacity="0.4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Pattern style repeating background */
+.pattern-bg {
+  background-color: #0f172a;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="2" fill="%23334155"/></svg>');
+  background-repeat: repeat;
+  background-position: top left;
+  color: #cbd5e1;
+}
+
+/* Parallax Effect using background-attachment: fixed */
+.fixed-hero-bg {
+  height: 250px;
+  margin-top: 40px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="800" viewBox="0 0 1000 800"><rect width="1000" height="800" fill="%231e293b"/><line x1="0" y1="0" x2="1000" y2="800" stroke="%23f43f5e" stroke-width="4" opacity="0.3"/><line x1="1000" y1="0" x2="0" y2="800" stroke="%233b82f6" stroke-width="4" opacity="0.3"/></svg>');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: inset 0 0 100px rgba(0,0,0,0.5);
+}

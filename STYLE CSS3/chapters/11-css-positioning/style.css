@@ -1,0 +1,125 @@
+/* 11. CSS Positioning */
+
+body {
+  font-family: sans-serif;
+  background-color: #f1f5f9;
+  padding: 30px;
+  margin: 0;
+}
+
+.positioning-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+h1 {
+  text-align: center;
+  color: #1e293b;
+}
+
+.pos-area {
+  position: relative; /* Essential for relative positioning checks */
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  padding: 20px;
+  min-height: 140px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+}
+
+.box {
+  width: 150px;
+  height: 60px;
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Static position */
+.box-static {
+  background-color: #64748b;
+  position: static;
+}
+
+/* Relative position */
+.box-relative {
+  background-color: #3b82f6;
+  position: relative;
+  top: 15px;
+  left: 30px;
+}
+
+/* Absolute position inside relative parent */
+.box-absolute {
+  background-color: #ef4444;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* Z-Index Overlapping layers */
+.z-index-area {
+  min-height: 180px;
+}
+
+.layer-1 {
+  background-color: #a855f7;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  z-index: 1;
+}
+
+.layer-2 {
+  background-color: #ec4899;
+  position: absolute;
+  top: 60px;
+  left: 80px;
+  z-index: 2; /* Sits over layer-1 */
+}
+
+/* Fixed viewport positioning */
+.box-fixed {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #10b981;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+/* Sticky scrolling context */
+.scroll-container {
+  height: 200px;
+  overflow-y: scroll;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+.box-sticky {
+  position: sticky;
+  top: 0;
+  background-color: #f59e0b;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}

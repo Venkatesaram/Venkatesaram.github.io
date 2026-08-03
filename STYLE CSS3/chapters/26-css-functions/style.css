@@ -1,0 +1,172 @@
+/* 26. CSS Functions Playground */
+
+:root {
+  --primary: #4f46e5;
+}
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 15px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* 1. calc() */
+.parent {
+  background: #ddd;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.calc-box {
+  width: calc(100% - 80px);
+  background: #4f46e5;
+  color: white;
+  padding: 15px;
+  font-weight: bold;
+  margin: 0 auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(79, 70, 229, 0.15);
+}
+
+/* 2. min() */
+.min-box {
+  width: min(400px, 100%);
+  background: #10b981;
+  padding: 20px;
+  color: white;
+  margin: auto;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* 3. max() */
+.max-box {
+  width: max(300px, 50%);
+  background: #f97316;
+  padding: 20px;
+  color: white;
+  margin: auto;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* 4. clamp() */
+.clamp-text {
+  font-size: clamp(20px, 5vw, 50px);
+  color: #1e293b;
+  margin: 15px 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* 5. var() */
+.btn {
+  background: var(--primary);
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/* 6. rgb() */
+.rgb-box {
+  background: rgb(59,130,246);
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+/* 7. rgba() */
+.rgba-box {
+  background: rgba(59, 130, 246, 0.4);
+  padding: 20px;
+  color: #1e3a8a;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+/* 8. hsl() */
+.hsl-box {
+  background: hsl(220, 80%, 60%);
+  padding: 20px;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 200px;
+  margin: 0 auto;
+}
+
+/* 9. url() */
+.url-box {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%234f46e5"/><circle cx="50" cy="50" r="40" fill="%23818cf8"/></svg>');
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  width: 250px;
+  margin: 0 auto;
+}

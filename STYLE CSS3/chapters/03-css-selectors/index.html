@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03. CSS Selectors - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+  <h1>Chapter 03: CSS Selectors</h1>
+
+  <!-- ===================================== -->
+  <!-- 1. Universal Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>1. Universal Selector (*)</h2>
+    <p>Paragraph One</p>
+    <div>Simple Div</div>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 2. Element Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>2. Element Selector</h2>
+    <p>This is a paragraph.</p>
+    <h3>This is a heading.</h3>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 3. Class Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>3. Class Selector (.class)</h2>
+    <p class="note">First Note</p>
+    <p class="note">Second Note</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 4. ID Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>4. ID Selector (#id)</h2>
+    <p id="message">Unique Paragraph</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 5. Group Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section group-section">
+    <h2>5. Group Selector</h2>
+    <h3>Heading</h3>
+    <p>Paragraph</p>
+    <div>Division</div>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 6. Descendant Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>6. Descendant Selector (space)</h2>
+    <div class="parent">
+      <p>Paragraph inside Parent</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 7. Child Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>7. Child Selector (&gt;)</h2>
+    <div class="box">
+      <p>Direct Child Paragraph</p>
+      <section>
+        <p>Nested Paragraph</p>
+      </section>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 8. Adjacent Sibling -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>8. Adjacent Sibling Selector (+)</h2>
+    <h3>Heading</h3>
+    <p>First Paragraph</p>
+    <p>Second Paragraph</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 9. General Sibling -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>9. General Sibling Selector (~)</h2>
+    <h4>Heading</h4>
+    <p>Paragraph One</p>
+    <p>Paragraph Two</p>
+    <p>Paragraph Three</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 10. Attribute Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>10. Attribute Selector</h2>
+    <input type="text" placeholder="Name">
+    <input type="email" placeholder="Email">
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 11. Attribute Equals -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>11. Attribute = Value</h2>
+    <a href="https://google.com">Google</a>
+    <a href="https://openai.com">OpenAI</a>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 12. First Child -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>12. :first-child</h2>
+    <ul>
+      <li>Apple</li>
+      <li>Mango</li>
+      <li>Orange</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 13. Last Child -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>13. :last-child</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 14. nth-child -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>14. :nth-child()</h2>
+    <ol>
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+      <li>Four</li>
+    </ol>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 15. Hover -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>15. :hover</h2>
+    <button>Hover Me</button>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 16. Focus -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>16. :focus</h2>
+    <input type="text" placeholder="Click Here">
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 17. Checked -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>17. :checked</h2>
+    <input type="checkbox" checked id="check-html"> <label for="check-html">HTML</label>
+    <br>
+    <input type="checkbox" id="check-css"> <label for="check-css">CSS</label>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 18. Disabled -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>18. :disabled</h2>
+    <input type="text" disabled value="Disabled">
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 19. Enabled -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>19. :enabled</h2>
+    <input type="text" value="Enabled">
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 20. Empty -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>20. :empty</h2>
+    <div class="empty-box"></div>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 21. Not Selector -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>21. :not()</h2>
+    <p class="success">Success</p>
+    <p>Error</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 22. Before -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>22. ::before</h2>
+    <p class="before-example">Welcome Student</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 23. After -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>23. ::after</h2>
+    <p class="after-example">HTML5</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 24. First Letter -->
+  <!-- ===================================== -->
+  <section class="selector-section" style="overflow: hidden;">
+    <h2>24. ::first-letter</h2>
+    <p class="letter">Learning CSS3 is easy.</p>
+  </section>
+
+  <hr>
+
+  <!-- ===================================== -->
+  <!-- 25. First Line -->
+  <!-- ===================================== -->
+  <section class="selector-section">
+    <h2>25. ::first-line</h2>
+    <p class="line">CSS helps create beautiful and responsive webpages using colors, layouts, spacing, animations, and much more.</p>
+  </section>
+</div>
+
+</body>
+</html>

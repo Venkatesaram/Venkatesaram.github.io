@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22. CSS Transformations - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="container">
+  <h1>Chapter 22: CSS Transformations</h1>
+
+  <!-- 1. rotate() -->
+  <section class="card card-rotate">
+    <h2>1. rotate()</h2>
+    <div class="demo-box-container">
+      <div class="box">rotate(45deg)</div>
+    </div>
+    <p>Rotate an element clockwise or counter-clockwise by specific degrees.</p>
+  </section>
+
+  <hr>
+
+  <!-- 2. scale() -->
+  <section class="card card-scale">
+    <h2>2. scale()</h2>
+    <div class="demo-box-container">
+      <div class="box">scale(1.2)</div>
+    </div>
+    <p>Increase or decrease the sizing factor of an element.</p>
+  </section>
+
+  <hr>
+
+  <!-- 3. translateX() -->
+  <section class="card card-translatex">
+    <h2>3. translateX()</h2>
+    <div class="demo-box-container">
+      <div class="box">translateX(80px)</div>
+    </div>
+    <p>Moves the element horizontally along the X-axis.</p>
+  </section>
+
+  <hr>
+
+  <!-- 4. translateY() -->
+  <section class="card card-translatey">
+    <h2>4. translateY()</h2>
+    <div class="demo-box-container">
+      <div class="box">translateY(-40px)</div>
+    </div>
+    <p>Moves the element vertically along the Y-axis.</p>
+  </section>
+
+  <hr>
+
+  <!-- 5. translate() -->
+  <section class="card card-translate">
+    <h2>5. translate()</h2>
+    <div class="demo-box-container">
+      <div class="box">translate(60px, -20px)</div>
+    </div>
+    <p>Moves the element simultaneously along both the X and Y axes.</p>
+  </section>
+
+  <hr>
+
+  <!-- 6. skewX() -->
+  <section class="card card-skewx">
+    <h2>6. skewX()</h2>
+    <div class="demo-box-container">
+      <div class="box">skewX(20deg)</div>
+    </div>
+    <p>Slants an element horizontally along the X-axis.</p>
+  </section>
+
+  <hr>
+
+  <!-- 7. skewY() -->
+  <section class="card card-skewy">
+    <h2>7. skewY()</h2>
+    <div class="demo-box-container">
+      <div class="box">skewY(20deg)</div>
+    </div>
+    <p>Slants an element vertically along the Y-axis.</p>
+  </section>
+
+  <hr>
+
+  <!-- 8. skew() -->
+  <section class="card card-skew">
+    <h2>8. skew()</h2>
+    <div class="demo-box-container">
+      <div class="box">skew(20deg, 10deg)</div>
+    </div>
+    <p>Slants the element along both the X and Y axes.</p>
+  </section>
+
+  <hr>
+
+  <!-- 9. rotateX() -->
+  <section class="card card-rotatex">
+    <h2>9. rotateX() (3D)</h2>
+    <div class="demo-box-container">
+      <div class="box">rotateX(180deg)</div>
+    </div>
+    <p>Rotates the element around the horizontal X-axis in 3D space.</p>
+  </section>
+
+  <hr>
+
+  <!-- 10. rotateY() -->
+  <section class="card card-rotatey">
+    <h2>10. rotateY() (3D)</h2>
+    <div class="demo-box-container">
+      <div class="box">rotateY(180deg)</div>
+    </div>
+    <p>Rotates the element around the vertical Y-axis in 3D space.</p>
+  </section>
+
+  <hr>
+
+  <!-- 11. rotateZ() -->
+  <section class="card card-rotatez">
+    <h2>11. rotateZ() (3D)</h2>
+    <div class="demo-box-container">
+      <div class="box">rotateZ(180deg)</div>
+    </div>
+    <p>Rotates the element around the Z-axis in 3D space.</p>
+  </section>
+
+  <hr>
+
+  <!-- 12. transform-origin -->
+  <section class="card">
+    <h2>12. transform-origin</h2>
+    <div class="origin-container">
+      <div class="origin-box-wrapper origin-center">
+        <div class="demo-box-container">
+          <div class="box box-origin">Center</div>
+        </div>
+        <div class="origin-label">center</div>
+      </div>
+      <div class="origin-box-wrapper origin-left-top">
+        <div class="demo-box-container">
+          <div class="box box-origin">Left Top</div>
+        </div>
+        <div class="origin-label">left top</div>
+      </div>
+      <div class="origin-box-wrapper origin-right-bottom">
+        <div class="demo-box-container">
+          <div class="box box-origin">Right Bottom</div>
+        </div>
+        <div class="origin-label">right bottom</div>
+      </div>
+    </div>
+    <p>Hover over each block to see how the rotation pivot point (origin) changes.</p>
+  </section>
+
+  <hr>
+
+  <!-- 13. Multiple Transform Functions -->
+  <section class="card card-multiple">
+    <h2>13. Multiple Transform Functions</h2>
+    <div class="demo-box-container">
+      <div class="box">Multiple</div>
+    </div>
+    <p>Applies translate, rotate, scale, and skew in a single transform declaration.</p>
+  </section>
+
+  <hr>
+
+  <!-- 14. Hover Card Effect -->
+  <section class="card">
+    <h2>14. Hover Card Effect</h2>
+    <div class="hover-card">
+      <h4>Blog Post Card</h4>
+      <p>Card lifts up and gets a shadow transition on hover.</p>
+    </div>
+    <p>Real-world application for Product and Blog Card components.</p>
+  </section>
+
+  <hr>
+
+  <!-- 15. Button Click Effect -->
+  <section class="card">
+    <h2>15. Button Click Effect</h2>
+    <button class="click-btn">Click / Hold Me</button>
+    <p>Real-world active state scaling effect to simulate button compression.</p>
+  </section>
+
+  <hr>
+
+  <!-- 16. Image Zoom -->
+  <section class="card">
+    <h2>16. Image Zoom</h2>
+    <div class="zoom-wrapper">
+      <img src="https://picsum.photos/400/300" class="zoom-img" alt="Zoom Demo">
+    </div>
+    <p>Hover over the image card to see the zoom effect inside the overflow boundary.</p>
+  </section>
+
+  <hr>
+
+  <!-- 17. Floating Icon -->
+  <section class="card">
+    <h2>17. Floating Icon</h2>
+    <div class="floating-icon">🚀</div>
+    <p>Continuous translation animation simulating a hovering layout.</p>
+  </section>
+
+  <hr>
+
+  <!-- 18. 3D Flip Card -->
+  <section class="card">
+    <h2>18. 3D Flip Card</h2>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">Front Side</div>
+        <div class="flip-card-back">Back Side</div>
+      </div>
+    </div>
+    <p>Hover over the card to see the 3D rotation flip the card around the Y-axis.</p>
+  </section>
+
+  <hr>
+
+  <!-- 19. Loading Spinner -->
+  <section class="card">
+    <h2>19. Loading Spinner</h2>
+    <div class="spinner"></div>
+    <p>A continuous 360-degree rotation animation demonstrating animations.</p>
+  </section>
+</div>
+
+</body>
+</html>

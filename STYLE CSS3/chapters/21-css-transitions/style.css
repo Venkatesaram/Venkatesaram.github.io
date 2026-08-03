@@ -1,0 +1,178 @@
+/* 21. CSS Transitions Sandbox */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+  color: #1e293b;
+  text-align: center;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+h2 {
+  color: #4f46e5;
+  font-size: 1.15rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  background: #f5f3ff;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+p {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 12px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Base Demo Box */
+.demo {
+  width: 120px;
+  height: 50px;
+  background-color: #e2e8f0;
+  color: #334155;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+
+/* 1. Basic Transition */
+.basic-demo {
+  transition: 0.5s;
+}
+
+.basic-demo:hover {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* 2. Transition Property */
+.property-demo {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+
+.property-demo:hover {
+  background-color: #ef4444;
+  transform: scale(1.2);
+}
+
+/* 3. Transition Duration */
+.fast {
+  transition: 0.3s;
+  background-color: #0ea5e9;
+  color: white;
+  margin-bottom: 10px;
+}
+.fast:hover {
+  background-color: #0369a1;
+  width: 200px;
+}
+
+.slow {
+  transition: 2s;
+  background-color: #0ea5e9;
+  color: white;
+}
+.slow:hover {
+  background-color: #0369a1;
+  width: 200px;
+}
+
+/* 4. Transition Delay */
+.delay-demo {
+  transition: 0.5s;
+  transition-delay: 2s;
+}
+.delay-demo:hover {
+  background-color: #10b981;
+  color: white;
+}
+
+/* 5. Timing Functions */
+.timing-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.timing-grid .demo {
+  transition-duration: 1.5s;
+  width: 100px;
+  background-color: #a855f7;
+  color: white;
+}
+.timing-grid:hover .demo {
+  transform: translateX(200px);
+}
+
+.ease { transition-timing-function: ease; }
+.linear { transition-timing-function: linear; }
+.easein { transition-timing-function: ease-in; }
+.easeout { transition-timing-function: ease-out; }
+.easeinout { transition-timing-function: ease-in-out; }
+.bezier { transition-timing-function: cubic-bezier(0.68, -0.6, 0.32, 1.6); }
+
+/* 6. Multiple Property Transition */
+.multi {
+  transition: background 0.5s, width 0.5s, border-radius 0.5s, color 0.5s;
+}
+.multi:hover {
+  background-color: #db2777;
+  width: 250px;
+  border-radius: 40px;
+  color: white;
+}
+
+/* 7. Transform + Transition */
+.transform-demo {
+  transition: 0.6s;
+  background-color: #f59e0b;
+  color: white;
+}
+.transform-demo:hover {
+  transform: rotate(15deg) scale(1.2) translateY(-10px);
+  background-color: #d97706;
+}
+
+/* 8. Transition Shorthand */
+.shorthand {
+  transition: all 0.5s ease 0.3s;
+}
+.shorthand:hover {
+  background-color: #06b6d4;
+  color: white;
+  border-radius: 20px;
+  transform: rotate(360deg);
+}

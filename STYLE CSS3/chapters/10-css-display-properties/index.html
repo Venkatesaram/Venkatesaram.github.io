@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10. CSS Display Properties - CSS3 Course</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+<div class="display-container">
+  <h1>CSS Display Mechanics</h1>
+  
+  <div class="section block-demo">
+    <h3>1. Block Elements (Takes full width)</h3>
+    <div class="block-box">Block Box 1</div>
+    <div class="block-box">Block Box 2</div>
+  </div>
+
+  <div class="section inline-demo">
+    <h3>2. Inline Elements (Shrinks to fit contents)</h3>
+    <span class="inline-box">Inline 1</span>
+    <span class="inline-box">Inline 2</span>
+    <span class="inline-box">Inline 3</span>
+  </div>
+
+  <div class="section inline-block-demo">
+    <h3>3. Inline-Block (Inline grid, supports size/padding)</h3>
+    <div class="inline-block-box">Box 1</div>
+    <div class="inline-block-box">Box 2</div>
+  </div>
+
+  <div class="section visibility-comparison">
+    <h3>4. Display: None vs Visibility: Hidden</h3>
+    <div class="flex-row">
+      <div class="card normal">Visible Box</div>
+      <div class="card gone">Display: None (removes block)</div>
+      <div class="card invisible">Visibility: Hidden (retains space)</div>
+      <div class="card normal">Next Box</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
