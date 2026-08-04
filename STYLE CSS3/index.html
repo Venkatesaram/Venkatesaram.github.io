@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+  <!-- Sidebar Backdrop for Mobile -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
   <div class="app-container" id="app">
     <!-- Sidebar Navigation -->
     <aside class="sidebar" id="sidebar-nav">
@@ -59,6 +62,7 @@
           </div>
           <div class="actions" style="display: flex; gap: 12px; align-items: center;">
             <span class="file-path" id="file-path-indicator">chapters/01-introduction-to-css/index.html</span>
+            <button id="run-code-btn" class="run-btn" title="Run Code" style="display: none;">▶️ Run Code</button>
             <button id="copy-code-btn" class="copy-btn" title="Copy Code" style="display: none;">📋 Copy</button>
           </div>
         </div>
@@ -72,12 +76,12 @@
 
           <!-- 2. HTML Code display -->
           <div class="tab-panel" id="panel-html">
-            <pre><code id="code-html" class="language-html">Select a chapter to load HTML...</code></pre>
+            <pre><code id="code-html" class="language-html" contenteditable="true">Select a chapter to load HTML...</code></pre>
           </div>
 
           <!-- 3. CSS Code display -->
           <div class="tab-panel" id="panel-css">
-            <pre><code id="code-css" class="language-css">Select a chapter to load CSS...</code></pre>
+            <pre><code id="code-css" class="language-css" contenteditable="true">Select a chapter to load CSS...</code></pre>
           </div>
 
           <!-- 4. Markdown README display -->

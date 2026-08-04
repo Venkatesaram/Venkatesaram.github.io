@@ -2048,121 +2048,776 @@ The \`position\` property specifies the type of positioning method used for an e
     num: "12",
     name: "css-overflow",
     title: "CSS Overflow",
-    description: "Manage visual clippings: Hide overflow, display vertical/horizontal scrollbars, and configure automatic overflows.",
+    description: "Master basic, axis, text ellipsis, line clamps, zoom cropping, chat windows, snapping carousels, custom scrollbars, and overscroll-behavior.",
     html: `
-<div class="overflow-container">
-  <h1>CSS Overflow Control</h1>
-  
-  <div class="grid">
-    <div class="card overflow-visible">
-      <h3>overflow: visible (Default)</h3>
-      <div class="content-box">
-        This box displays all content. Overflowing text pours out over elements below, which can ruin grid flows.
+<div class="playground-container">
+  <header class="playground-header">
+    <h1>CSS Overflow Lab</h1>
+    <p>Explore basic, axis, text, multi-line, modern overscroll, and scroll snap behaviors in CSS3.</p>
+  </header>
+
+  <!-- 1. Basic Overflow Types -->
+  <section class="pg-section">
+    <h2>1. Basic Overflow Types</h2>
+    <div class="pg-grid">
+      <div class="pg-card">
+        <h3>visible (Default)</h3>
+        <div class="demo-box overflow-visible">
+          <div class="overflowing-content">
+            This content overflows its parent box because overflow is set to visible. Notice how the text spills outside the borders and renders over neighboring elements, creating layout issues if not handled carefully.
+          </div>
+        </div>
+      </div>
+      <div class="pg-card">
+        <h3>hidden</h3>
+        <div class="demo-box overflow-hidden">
+          <div class="overflowing-content">
+            This content overflows its parent box, but because overflow is set to hidden, the excess text is completely clipped and remains invisible. There is no way for the user to scroll or view the hidden text.
+          </div>
+        </div>
+      </div>
+      <div class="pg-card">
+        <h3>clip (Modern CSS)</h3>
+        <div class="demo-box overflow-clip">
+          <div class="overflowing-content">
+            This content is clipped at the element's exact margin box using overflow: clip. Unlike hidden, clip prevents all scrolling, including programmatic scrolling (like element.scrollTo) and saves layout rendering memory.
+          </div>
+        </div>
+      </div>
+      <div class="pg-card">
+        <h3>scroll</h3>
+        <div class="demo-box overflow-scroll">
+          <div class="overflowing-content">
+            This container forces scrollbars on both horizontal and vertical axes (overflow: scroll), regardless of whether the text overflows or fits inside.
+          </div>
+        </div>
+      </div>
+      <div class="pg-card">
+        <h3>auto (Recommended)</h3>
+        <div class="demo-box overflow-auto">
+          <div class="overflowing-content">
+            This container adds scrollbars dynamically (overflow: auto) only when the content is too large. If the text fits, no scrollbars are shown, keeping the UI clean.
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="card overflow-hidden">
-      <h3>overflow: hidden</h3>
-      <div class="content-box">
-        This box clips overflow. Any text extending past the bounds is completely hidden from view.
+  <!-- 2. Axis Overflow (Horizontal Image Gallery) -->
+  <section class="pg-section">
+    <h2>2. Axis Overflow (Horizontal Image Gallery)</h2>
+    <p class="pg-desc"><code>overflow-x: scroll; overflow-y: hidden;</code> - Scrolls horizontally while clipping vertical dimensions.</p>
+    <div class="horizontal-gallery">
+      <div class="gallery-track">
+        <div class="gallery-item" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">Image 1</div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">Image 2</div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #10b981, #059669);">Image 3</div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #f59e0b, #d97706);">Image 4</div>
+        <div class="gallery-item" style="background: linear-gradient(135deg, #6366f1, #a855f7);">Image 5</div>
       </div>
     </div>
+  </section>
 
-    <div class="card overflow-scroll">
-      <h3>overflow: scroll</h3>
-      <div class="content-box">
-        Adds scrollbars to both X and Y axes, regardless of whether the content overflows or not.
+  <!-- 3. Text Overflow Truncation -->
+  <section class="pg-section">
+    <h2>3. Text Overflow & Multi-Line Truncation</h2>
+    <div class="pg-grid-2">
+      <!-- Single Line Ellipsis -->
+      <div class="pg-card">
+        <h3>Single-Line Text Ellipsis (Amazon/Flipkart style)</h3>
+        <div class="ellipsis-card">
+          <h4 class="product-title">Very Long Product Title: Wireless Noise-Cancelling Headphones Pro Max Edition II</h4>
+          <p class="product-price">$199.99</p>
+        </div>
+        <p class="pg-note">Uses <code>white-space: nowrap; overflow: hidden; text-overflow: ellipsis;</code></p>
+      </div>
+
+      <!-- Multi-Line Truncation -->
+      <div class="pg-card">
+        <h3>Multi-Line Clamp (News/Article Card)</h3>
+        <div class="clamp-card">
+          <h4 class="article-title">CSS3 Breaking News</h4>
+          <p class="article-preview">
+            Modern CSS has introduced standard properties that replace old JavaScript hacks. In this article, we cover how the latest layout modules handle overflow, scroll snap coordinates, container query queries, and subgrid styles to make fluid layouts robust on any device screen size.
+          </p>
+        </div>
+        <p class="pg-note">Uses <code>-webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden;</code></p>
       </div>
     </div>
+  </section>
 
-    <div class="card overflow-auto">
-      <h3>overflow: auto</h3>
-      <div class="content-box">
-        Only adds scrollbars if the content exceeds the layout boundaries of the container box. Recommended!
+  <!-- 4. Image Cropping Zoom -->
+  <section class="pg-section">
+    <h2>4. Image Cropping (Zoom on Hover)</h2>
+    <p class="pg-desc">Uses <code>overflow: hidden;</code> on the parent frame combined with <code>transform: scale(1.2);</code> on the image.</p>
+    <div class="zoom-card">
+      <div class="zoom-frame">
+        <div class="mock-image">📷 Beautiful Landscape</div>
+      </div>
+      <div class="zoom-details">
+        <h4>Portfolio Item</h4>
+        <p>Hover over the image to see a clean overflow crop zoom effect.</p>
       </div>
     </div>
-  </div>
-</div>
-`,
-    css: `/* 12. CSS Overflow */
+  </section>
 
-body {
-  font-family: system-ui, sans-serif;
-  background-color: #0f172a;
-  color: #e2e8f0;
-  padding: 40px 10px;
-  margin: 0;
+  <!-- 5. Real-World Scrollable Components -->
+  <section class="pg-section">
+    <h2>5. Real-World Scrollable Components</h2>
+    <div class="pg-grid-2">
+      <!-- WhatsApp Style Chat Window -->
+      <div class="pg-card">
+        <h3>Scrollable Chat Window (WhatsApp Style)</h3>
+        <div class="chat-container">
+          <div class="chat-bubble received">Hey! Are we still reviewing CSS Overflow today?</div>
+          <div class="chat-bubble sent">Yes! We are covering axis scroll, custom scrollbars, and clamp properties.</div>
+          <div class="chat-bubble received">Great! Can we check out scroll-snapping as well?</div>
+          <div class="chat-bubble sent">Definitely, we have card sliders and carousel snap points setup.</div>
+          <div class="chat-bubble received">Awesome, see you in the workspace!</div>
+        </div>
+        <p class="pg-note">Uses <code>overflow-y: auto;</code> with fixed-height container.</p>
+      </div>
+
+      <!-- Code Editor (VS Code Style) -->
+      <div class="pg-card">
+        <h3>Code Editor (VS Code/GitHub style)</h3>
+        <div class="code-editor">
+          <pre><code>// CSS3 Custom Scrollbars Example
+.custom-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #6366f1 #1e293b;
 }
 
-.overflow-container {
-  max-width: 900px;
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 4px;
+}</code></pre>
+        </div>
+        <p class="pg-note">Uses <code>overflow: auto; white-space: pre;</code></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Netflix Card Slider with Scroll Snap -->
+  <section class="pg-section">
+    <h2>6. Horizontal Card Slider (Netflix/Spotify style)</h2>
+    <p class="pg-desc">Uses <code>overflow-x: auto; scroll-snap-type: x mandatory;</code> for smooth snapping card sliders.</p>
+    <div class="card-slider">
+      <div class="slider-card">
+        <div class="slider-img" style="background: #e11d48;">Show 1</div>
+        <h4>Card Title 1</h4>
+      </div>
+      <div class="slider-card">
+        <div class="slider-img" style="background: #2563eb;">Show 2</div>
+        <h4>Card Title 2</h4>
+      </div>
+      <div class="slider-card">
+        <div class="slider-img" style="background: #16a34a;">Show 3</div>
+        <h4>Card Title 3</h4>
+      </div>
+      <div class="slider-card">
+        <div class="slider-img" style="background: #d97706;">Show 4</div>
+        <h4>Card Title 4</h4>
+      </div>
+      <div class="slider-card">
+        <div class="slider-img" style="background: #7c3aed;">Show 5</div>
+        <h4>Card Title 5</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Overscroll Behavior & Smooth Scroll -->
+  <section class="pg-section">
+    <h2>7. Overscroll Behavior Control</h2>
+    <p class="pg-desc">Scroll inside the modal container. Notice that reaching the scroll boundary does NOT trigger scrolling on the main page body (prevents scroll chaining).</p>
+    <div class="modal-box-demo">
+      <div class="modal-header">Modal Window (overscroll-behavior: contain)</div>
+      <div class="modal-body">
+        <p>1. Start scrolling here...</p>
+        <p>2. Scroll down further...</p>
+        <p>3. Standard modal scroll behavior often passes (chains) scroll events to the outer parent document when you hit the boundary.</p>
+        <p>4. Setting <code>overscroll-behavior: contain;</code> blocks scroll chaining, keeping the parent page scroll intact!</p>
+        <p>5. Scroll limits reached.</p>
+      </div>
+    </div>
+  </section>
+</div>
+`,
+    css: `/* 12. CSS Overflow Playground Stylesheet */
+
+body {
+  font-family: BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #fafafa;
+  color: #334155;
+  padding: 30px 15px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.playground-container {
+  max-width: 850px;
   margin: 0 auto;
 }
 
-h1 {
+.playground-header {
   text-align: center;
-  color: #f8fafc;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+.playground-header h1 {
+  color: #1e293b;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
 }
 
-.card {
-  background: #1e293b;
-  border: 1px solid #334155;
-  border-radius: 8px;
-  padding: 15px;
+.playground-header p {
+  color: #64748b;
+  font-size: 13px;
 }
 
-.card h3 {
-  font-size: 14px;
-  color: #94a3b8;
+.pg-section {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.pg-section h2 {
+  font-size: 1.15rem;
+  color: #4f46e5;
   margin-top: 0;
-  margin-bottom: 15px;
-  height: 40px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 6px;
 }
 
-/* The overflow testing limits */
-.content-box {
+.pg-desc {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.pg-note {
+  font-size: 11px;
+  color: #4f46e5;
+  margin-top: 8px;
+  background: #f5f3ff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* 1. Basic Overflow Grid */
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+}
+
+.pg-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pg-card h3 {
+  font-size: 12px;
+  color: #475569;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.demo-box {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  height: 90px;
+  font-size: 11px;
+  color: #475569;
+  padding: 8px;
+}
+
+.overflowing-content {
   width: 100%;
+}
+
+.overflow-visible .overflowing-content { overflow: visible; }
+.overflow-hidden .overflowing-content { overflow: hidden; }
+.overflow-clip .overflowing-content { overflow: clip; }
+.overflow-scroll .overflowing-content { overflow: scroll; }
+.overflow-auto .overflowing-content { overflow: auto; }
+
+.overflow-visible { overflow: visible; }
+.overflow-hidden { overflow: hidden; }
+.overflow-clip { overflow: clip; }
+.overflow-scroll { overflow: scroll; }
+.overflow-auto { overflow: auto; }
+
+/* 2. Axis Overflow Horizontal Image Gallery */
+.horizontal-gallery {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px;
+  background: #f8fafc;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+}
+
+.gallery-item {
+  width: 150px;
   height: 100px;
-  background-color: #334155;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  font-size: 13px;
+}
+
+/* 3. Text Overflow & Multi-Line Clamp */
+.pg-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.ellipsis-card, .clamp-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 4px;
   padding: 10px;
+}
+
+.product-title {
   font-size: 13px;
-  line-height: 1.5;
+  color: #1e293b;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.overflow-visible .content-box {
-  overflow: visible; /* Content spills out */
+.product-price {
+  color: #16a34a;
+  font-weight: bold;
+  font-size: 12px;
+  margin: 0;
 }
 
-.overflow-hidden .content-box {
-  overflow: hidden; /* Content gets clipped */
+.article-title {
+  font-size: 13px;
+  color: #4f46e5;
+  margin: 0 0 6px 0;
 }
 
-.overflow-scroll .content-box {
-  overflow: scroll; /* Both scrollbars always shown */
+.article-preview {
+  font-size: 11px;
+  color: #475569;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.overflow-auto .content-box {
-  overflow: auto; /* Scrollbar added only when needed */
+/* 4. Image Cropping */
+.zoom-card {
+  max-width: 280px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.zoom-frame {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.mock-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+  transition: transform 0.4s ease;
+}
+
+.zoom-card:hover .mock-image {
+  transform: scale(1.2);
+}
+
+.zoom-details {
+  padding: 12px;
+}
+
+.zoom-details h4 {
+  margin: 0 0 4px 0;
+  color: #1e293b;
+  font-size: 13px;
+}
+
+.zoom-details p {
+  margin: 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+/* 5. WhatsApp Chat Window & Code Editor */
+.chat-container {
+  height: 160px;
+  overflow-y: auto;
+  background: #efeae2;
+  border-radius: 4px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-bubble {
+  max-width: 80%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.chat-bubble.received {
+  background: #ffffff;
+  color: #111b21;
+  align-self: flex-start;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+}
+
+.chat-bubble.sent {
+  background: #d9fdd3;
+  color: #111b21;
+  align-self: flex-end;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+}
+
+.code-editor {
+  height: 160px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 4px;
+  padding: 10px;
+  overflow: auto;
+}
+
+.code-editor pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  height: auto;
+}
+
+.code-editor code {
+  white-space: pre;
+  color: #c9d1d9;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+/* 6. Netflix Card Slider with Scroll Snap */
+.card-slider {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+}
+
+.slider-card {
+  min-width: 130px;
+  flex: 0 0 130px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 8px;
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+.slider-img {
+  width: 100%;
+  height: 80px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.slider-card h4 {
+  font-size: 11px;
+  color: #1e293b;
+  margin: 0;
+}
+
+/* 7. Overscroll Behavior modal demo */
+.modal-box-demo {
+  max-width: 320px;
+  margin: 0 auto;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.modal-header {
+  background: #f1f5f9;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #334155;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.modal-body {
+  height: 100px;
+  overflow-y: auto;
+  padding: 10px;
+  font-size: 11px;
+  color: #64748b;
+  overscroll-behavior: contain;
+}
+
+.modal-body p {
+  margin: 0 0 8px 0;
+}
+
+/* Modern Scrollbar Styling for elements */
+.horizontal-gallery::-webkit-scrollbar,
+.chat-container::-webkit-scrollbar,
+.code-editor::-webkit-scrollbar,
+.card-slider::-webkit-scrollbar,
+.modal-body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.horizontal-gallery::-webkit-scrollbar-track,
+.chat-container::-webkit-scrollbar-track,
+.code-editor::-webkit-scrollbar-track,
+.card-slider::-webkit-scrollbar-track,
+.modal-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 2px;
+}
+
+.horizontal-gallery::-webkit-scrollbar-thumb,
+.chat-container::-webkit-scrollbar-thumb,
+.code-editor::-webkit-scrollbar-thumb,
+.card-slider::-webkit-scrollbar-thumb,
+.modal-body::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 2px;
+}
+
+/* Firefox scrollbar styles */
+.horizontal-gallery, .chat-container, .code-editor, .card-slider, .modal-body {
+  scrollbar-width: thin;
+  scrollbar-color: #94a3b8 rgba(0, 0, 0, 0.02);
 }
 `,
     readme: `# Chapter 12: CSS Overflow
 
 The \`overflow\` property controls what happens to content that is too big to fit into an area.
 
-## Overflow Values:
-- **visible:** Default value. The overflow is not clipped. It renders outside the element's box.
-- **hidden:** The overflow is clipped, and the rest of the content will be invisible.
-- **scroll:** The overflow is clipped, and scrollbars are added to scroll inside the element.
-- **auto:** Similar to scroll, but it adds scrollbars only when necessary.
-- **overflow-x** & **overflow-y:** Specifying clipping separately on horizontal or vertical axes.
+---
+
+## 1. Introduction
+* **What is Overflow?** Overflow occurs when the size of content (text, images, or elements) exceeds the dimensions of its parent container box.
+* **Why it happens:** In CSS, if an element has a fixed size (\`width\` and \`height\`) or is constrained by viewport dimensions, any child content that is larger than those dimensions will spill out.
+* **Real-world Examples:** Scrollable chat screens, news preview cards, image zoom effects, and horizontal Netflix-style sliders.
+
+---
+
+## 2. Overflow Types
+* \`overflow: visible;\` - Default value. Overflowing content is not clipped and renders outside the element's box over other elements.
+* \`overflow: hidden;\` - Clips the overflow. Excess content is hidden and cannot be scrolled or accessed.
+* \`overflow: clip;\` - Similar to \`hidden\`, but prevents programmatic scrolling (like \`scrollTo()\`) and respects precise margin boxes.
+* \`overflow: scroll;\` - Clips the overflow and forces both horizontal and vertical scrollbars to display.
+* \`overflow: auto;\` - Adds scrollbars dynamically ONLY when content exceeds layout boundaries. Recommended for scrollable areas.
+
+---
+
+## 3. Axis Overflow
+CSS allows managing overflow on X and Y axes independently using:
+* \`overflow-x: scroll;\` - Force horizontal scrollbar.
+* \`overflow-y: hidden;\` - Hide vertical scrollbar.
+
+---
+
+## 4. Text Overflow (Ellipsis)
+To truncate long text into a single line with an ellipsis (...):
+\`\`\`css
+.single-line-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+\`\`\`
+Commonly used for product cards on Amazon, Flipkart, LinkedIn, and GitHub.
+
+---
+
+## 5. Multi-line Text Truncation (Line Clamp)
+To limit paragraphs to a specific number of lines:
+\`\`\`css
+.multi-line-truncate {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+\`\`\`
+
+---
+
+## 6. Image Cropping
+Combining \`overflow: hidden;\` on a frame with \`transform: scale()\` on hover allows zoom crops without breaking layouts:
+\`\`\`css
+.frame {
+  overflow: hidden;
+}
+.image:hover {
+  transform: scale(1.2);
+}
+\`\`\`
+
+---
+
+## 7. Scroll Snap & Card Sliders
+Standard horizontal sliders (like Netflix stories or Spotify albums) use scroll snapping for native mobile sliding transitions:
+\`\`\`css
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.card {
+  scroll-snap-align: start;
+}
+\`\`\`
+
+---
+
+## 8. Overscroll Behavior
+Prevents "scroll chaining" (scrolling inside a modal or sidebar that automatically scrolls the parent page once you hit the scroll boundaries):
+* \`overscroll-behavior: contain;\` - Prevents scroll events from propagating to parent viewports.
+* \`overscroll-behavior: none;\` - Same as contain, but also disables default bounce/overscroll elastic effects.
+
+---
+
+## 9. Modern Scrollbar Styling
+Customize scrollbar aesthetics across major browsers:
+* **Webkit Browsers (Chrome/Safari/Edge):**
+  * \`::-webkit-scrollbar\` - Target scrollbar dimensions.
+  * \`::-webkit-scrollbar-track\` - Style track background.
+  * \`::-webkit-scrollbar-thumb\` - Style the scroll handle.
+* **Firefox:**
+  * \`scrollbar-width: thin | none;\`
+  * \`scrollbar-color: thumb_color track_color;\`
+
+---
+
+## 10. Smooth Scrolling
+Enables smooth scroll transitions on anchored navigations:
+\`\`\`css
+html {
+  scroll-behavior: smooth;
+}
+\`\`\`
+
+---
+
+## 11. Comparison Table
+
+| Property | Clips Content | Scrollbar Display | Programmatic Scrolling |
+| :--- | :--- | :--- | :--- |
+| \`visible\` | ❌ No | ❌ None | ✅ Allowed |
+| \`hidden\` | ✅ Yes | ❌ None | ✅ Allowed |
+| \`clip\` | ✅ Yes | ❌ None | ❌ Blocked |
+| \`scroll\` | ✅ Yes | ✅ Always | ✅ Allowed |
+| \`auto\` | ✅ Yes | ⚙️ Auto (if needed) | ✅ Allowed |
+
+---
+
+## 12. Real-world Examples Table
+
+| Brand / Website | Overflow Techniques Used |
+| :--- | :--- |
+| **WhatsApp** | \`overflow-y: auto\` chat container |
+| **Amazon / Flipkart** | \`text-overflow: ellipsis\` title cards |
+| **Netflix / Spotify** | \`overflow-x: auto\` card sliders |
+| **GitHub / VS Code** | \`overflow: auto\` scrollable pre blocks |
+| **Facebook / Instagram** | Scroll-snap story sliders |
+
+---
+
+## 13. Overflow Decision Tree
+\`\`\`
+                Content Overflow?
+                      │
+         ┌────────────┴─────────────┐
+         │                          │
+       Yes                         No
+         │                          │
+Need scrollbar?                 visible
+         │
+   ┌─────┴─────┐
+   │           │
+  Yes         No
+   │           │
+ auto       hidden
+   │
+Always show?
+   │
+ scroll
+\`\`\`
+
+---
+
+## 14. Best Practices
+* ✅ Use \`overflow: auto\` for most scroll containers to avoid permanent empty scrollbar tracks.
+* ✅ Use \`text-overflow: ellipsis\` to prevent layouts from expanding due to long title texts.
+* ✅ Apply \`overscroll-behavior: contain\` to overlays, dialogs, and panels to block background page scrolling.
+* ✅ Rely on \`overflow: clip\` rather than \`hidden\` if no scrolling is required to save layout memory rendering cycles.
 `
   },
   {
@@ -9165,6 +9820,83 @@ chapters.forEach(ch => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${ch.num}. ${ch.title} - CSS3 Course</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Universal mobile responsiveness overrides */
+    * {
+      box-sizing: border-box !important;
+    }
+    html, body {
+      max-width: 100% !important;
+      overflow-x: hidden !important;
+    }
+    body {
+      padding: 8px !important;
+      margin: 0 !important;
+    }
+    body * {
+      max-width: 100% !important; /* Prevent any child from overflowing horizontally */
+    }
+    .container {
+      max-width: 100% !important;
+      padding: 10px !important;
+      box-sizing: border-box !important;
+      margin: 0 auto !important;
+    }
+    .card {
+      padding: 12px !important;
+      margin-bottom: 16px !important;
+    }
+    /* Ensure specific demos and custom cards scale responsively */
+    .demo, .card, .glass-card, .neumorphism, .local-box, .fallback-box, .reuse-card, .theme, .light-theme, .dark-theme, .dashboard-card {
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .glass-container-bg {
+      padding: 10px !important;
+      box-sizing: border-box !important;
+    }
+    .glass-card {
+      width: 100% !important;
+      padding: 15px !important;
+    }
+    h1 {
+      font-size: 1.4rem !important;
+      margin-bottom: 16px !important;
+      word-wrap: break-word !important;
+    }
+    h2 {
+      font-size: 0.95rem !important;
+      margin-bottom: 12px !important;
+      word-wrap: break-word !important;
+    }
+    .wrap {
+      max-width: 100% !important;
+    }
+    /* Adjust flex, grid and other demo containers */
+    .flex-row, .flex-column,
+    .justify-start, .justify-center, .justify-end, .justify-between, .justify-around, .justify-evenly,
+    .align-start, .align-center, .align-end,
+    .wrap, .gap-demo, .grow-demo, .shrink-demo, .basis-demo, .self-demo {
+      padding: 8px !important;
+      box-sizing: border-box !important;
+    }
+    /* Adjust font size and elements for extra small screens */
+    @media (max-width: 480px) {
+      body {
+        padding: 5px !important;
+      }
+      .container {
+        padding: 6px !important;
+      }
+      .card {
+        padding: 6px !important;
+      }
+      .demo {
+        width: 100% !important;
+        height: 100px !important;
+      }
+    }
+  </style>
 </head>
 <body>
   ${ch.html}

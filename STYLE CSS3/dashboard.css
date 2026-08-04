@@ -48,6 +48,11 @@
   --code-selector: #a855f7;
   --code-property: #38bdf8;
   --code-p-val: #e2e8f0;
+
+  /* Custom Scrollbar theme variables */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.25);
+  --scrollbar-thumb-hover: var(--color-primary);
+  --scrollbar-track: rgba(255, 255, 255, 0.03);
 }
 
 /* Light Theme overrides */
@@ -82,6 +87,11 @@
   --code-selector: #7c3aed;
   --code-property: #0369a1;
   --code-p-val: #1e293b;
+
+  /* Custom Scrollbar theme variables */
+  --scrollbar-thumb: rgba(0, 0, 0, 0.25);
+  --scrollbar-thumb-hover: var(--color-primary);
+  --scrollbar-track: rgba(0, 0, 0, 0.03);
 }
 
 /* -------------------------------------------------------------
@@ -102,20 +112,34 @@ body {
   transition: background-color var(--transition-normal);
 }
 
-/* Custom Scrollbars */
+/* Custom Scrollbars styling */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--scrollbar-thumb);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Sidebar Specific Scrollbars */
+.chapter-list {
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+.chapter-list::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
 }
 
 /* -------------------------------------------------------------
@@ -143,6 +167,29 @@ body {
   flex-direction: column;
   z-index: 100;
   transition: transform var(--transition-normal), background-color var(--transition-normal);
+}
+
+/* Sidebar Backdrop for Mobile Overlay */
+.sidebar-backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(8, 11, 17, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 95; /* Behind sidebar (100) but in front of main content */
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  pointer-events: none;
+}
+
+.sidebar-backdrop.visible {
+  display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Main Area styling */
@@ -306,6 +353,12 @@ body {
   display: none; /* Desktop hidden */
 }
 
+.active-chapter-title {
+  flex: 1;
+  min-width: 0;
+  padding: 0 12px;
+}
+
 .active-chapter-title h1 {
   font-size: 20px;
   font-weight: 700;
@@ -435,6 +488,48 @@ body {
   box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
 
+/* Run button styling */
+.run-btn {
+  background: #10b981; /* Green color for Run */
+  color: #ffffff;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 6px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  outline: none;
+}
+
+.run-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.run-btn:active {
+  transform: translateY(0);
+}
+
+/* Editable code block styling indicators */
+code[contenteditable="true"] {
+  outline: none;
+  border-left: 2px dashed var(--border-focus);
+  padding-left: 8px;
+  cursor: text;
+  display: block;
+}
+
+code[contenteditable="true"]:focus {
+  border-left: 2px solid #10b981;
+}
+
 
 /* Panels */
 .workspace-body {
@@ -457,16 +552,24 @@ body {
   height: 100%;
   overflow: auto;
   padding: 24px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tab-panel.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+#panel-readme.active {
+  display: block; /* Let theory documentation scroll naturally */
 }
 
 /* Live Iframe */
 #preview-iframe {
   width: 100%;
   height: 100%;
+  flex: 1;
   border: none;
   background-color: white;
   border-radius: var(--radius-md);
@@ -480,6 +583,7 @@ pre {
   overflow: auto;
   border: 1px solid var(--border-glass);
   height: 100%;
+  flex: 1;
   transition: background-color var(--transition-normal);
 }
 
@@ -570,17 +674,44 @@ code {
 /* -------------------------------------------------------------
    09. RESPONSIVE MEDIA QUERIES BREAKPOINTS
    ------------------------------------------------------------- */
+@media (min-width: 993px) {
+  .chapter-list {
+    overflow-y: scroll !important; /* Force scrollbar on desktop sidebar */
+  }
+}
+
 @media (max-width: 992px) {
+  :root {
+    --topbar-height: 60px;
+  }
+
+  body {
+    overflow-y: auto !important; /* Allow vertical scrolling of page */
+  }
+
+  .app-container {
+    height: auto !important;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
   .sidebar {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
     transform: translateX(-100%); /* offscreen */
+    height: 100vh;
   }
 
   .sidebar.open {
     transform: translateX(0); /* slide in */
+  }
+
+  .main-content {
+    height: auto !important;
+    min-height: calc(100vh - var(--topbar-height));
+    overflow: visible;
   }
 
   #toggle-sidebar {
@@ -589,15 +720,42 @@ code {
   }
 
   .workspace {
-    padding: 16px 20px 20px 20px;
+    padding: 12px 16px 20px 16px;
+    height: auto !important;
+    overflow: visible;
+  }
+
+  .workspace-body {
+    height: 70vh !important;
+    min-height: 480px !important;
+    overflow: hidden;
   }
 
   .top-bar {
-    padding: 0 20px;
+    height: auto !important;
+    min-height: var(--topbar-height);
+    padding: 10px 16px !important;
+    gap: 8px;
+  }
+
+  .active-chapter-title h1 {
+    font-size: 16px;
+  }
+
+  .active-chapter-title p {
+    font-size: 11px;
   }
 }
 
 @media (max-width: 600px) {
+  .workspace {
+    padding: 10px 10px 16px 10px;
+  }
+
+  .tab-panel {
+    padding: 12px !important; /* Save space inside interactive panels on small viewports */
+  }
+
   .workspace-header {
     flex-direction: column;
     align-items: flex-start;
@@ -608,6 +766,11 @@ code {
     width: 100%;
     overflow-x: auto;
     padding-bottom: 4px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  .tabs::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari/Edge */
   }
   
   .tab-btn {

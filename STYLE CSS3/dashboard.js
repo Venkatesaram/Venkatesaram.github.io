@@ -92,8 +92,12 @@ function renderChaptersMenu(filter = '') {
     item.addEventListener('click', (e) => {
       e.preventDefault();
       selectChapter(ch);
-      // Close sidebar on mobile
+      // Close sidebar and backdrop on mobile
       sidebar.classList.remove('open');
+      const backdrop = document.getElementById('sidebar-backdrop');
+      if (backdrop) {
+        backdrop.classList.remove('visible');
+      }
     });
     chapterList.appendChild(item);
   });
@@ -128,6 +132,7 @@ function selectChapter(chapter) {
   }
 
   // Load preview iframe src
+  previewIframe.removeAttribute('srcdoc');
   previewIframe.src = `${folder}/index.html`;
 
   // Fetch sources
@@ -299,17 +304,14 @@ function parseMarkdown(md) {
 // -------------------------------------------------------------
 // 04. EVENT HANDLERS (TABS, SEARCH, THEME, MOBILE SIDEBAR)
 // -------------------------------------------------------------
-// Copy Button and Visibility Management
+// Copy & Run Action Buttons Visibility Management
 const copyCodeBtn = document.getElementById('copy-code-btn');
+const runCodeBtn = document.getElementById('run-code-btn');
 
 function updateCopyButtonVisibility() {
-  if (copyCodeBtn) {
-    if (activeTab === 'html' || activeTab === 'css') {
-      copyCodeBtn.style.display = 'flex';
-    } else {
-      copyCodeBtn.style.display = 'none';
-    }
-  }
+  const showBtn = (activeTab === 'html' || activeTab === 'css');
+  if (copyCodeBtn) copyCodeBtn.style.display = showBtn ? 'flex' : 'none';
+  if (runCodeBtn) runCodeBtn.style.display = showBtn ? 'flex' : 'none';
 }
 
 // Copy Code action
@@ -334,6 +336,144 @@ if (copyCodeBtn) {
     }).catch(err => {
       console.error('Failed to copy code: ', err);
     });
+  });
+}
+
+// Run Code action
+if (runCodeBtn) {
+  runCodeBtn.addEventListener('click', () => {
+    const htmlText = codeHtml.textContent;
+    const cssText = codeCss.textContent;
+
+    let combinedHtml = htmlText;
+    
+    // Replace stylesheet link or head tag with inline CSS block
+    if (combinedHtml.includes('<link rel="stylesheet" href="style.css">')) {
+      combinedHtml = combinedHtml.replace(
+        '<link rel="stylesheet" href="style.css">',
+        `<style id="chapter-live-styles">${cssText}</style>`
+      );
+    } else if (combinedHtml.includes('</head>')) {
+      combinedHtml = combinedHtml.replace(
+        '</head>',
+        `<style id="chapter-live-styles">${cssText}</style></head>`
+      );
+    } else {
+      combinedHtml += `<style id="chapter-live-styles">${cssText}</style>`;
+    }
+
+    // Set theme synchronization inside the HTML tag string
+    const parentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    if (combinedHtml.includes('<html')) {
+      combinedHtml = combinedHtml.replace('<html', `<html data-theme="${parentTheme}"`);
+    }
+
+    // Inject responsive preview overrides inside the head block of the HTML string
+    const responsiveOverrides = `
+      <style id="responsive-preview-overrides">
+        /* Universal mobile responsiveness overrides */
+        * {
+          box-sizing: border-box !important;
+        }
+        html, body {
+          max-width: 100% !important;
+          overflow-x: hidden !important;
+        }
+        body {
+          padding: 8px !important;
+          margin: 0 !important;
+        }
+        body * {
+          max-width: 100% !important;
+        }
+        .container {
+          max-width: 100% !important;
+          padding: 10px !important;
+          box-sizing: border-box !important;
+          margin: 0 auto !important;
+        }
+        .card {
+          padding: 12px !important;
+          margin-bottom: 16px !important;
+        }
+        .demo, .card, .glass-card, .neumorphism, .local-box, .fallback-box, .reuse-card, .theme, .light-theme, .dark-theme, .dashboard-card {
+          max-width: 100% !important;
+          box-sizing: border-box !important;
+        }
+        .glass-container-bg {
+          padding: 10px !important;
+          box-sizing: border-box !important;
+        }
+        .glass-card {
+          width: 100% !important;
+          padding: 15px !important;
+        }
+        h1 {
+          font-size: 1.4rem !important;
+          margin-bottom: 16px !important;
+          word-wrap: break-word !important;
+        }
+        h2 {
+          font-size: 0.95rem !important;
+          margin-bottom: 12px !important;
+          word-wrap: break-word !important;
+        }
+        .wrap {
+          max-width: 100% !important;
+        }
+        .flex-row, .flex-column,
+        .justify-start, .justify-center, .justify-end, .justify-between, .justify-around, .justify-evenly,
+        .align-start, .align-center, .align-end,
+        .wrap, .gap-demo, .grow-demo, .shrink-demo, .basis-demo, .self-demo {
+          padding: 8px !important;
+          box-sizing: border-box !important;
+        }
+        @media (max-width: 480px) {
+          body {
+            padding: 5px !important;
+          }
+          .container {
+            padding: 6px !important;
+          }
+          .card {
+            padding: 6px !important;
+          }
+          .demo {
+            width: 100% !important;
+            height: 100px !important;
+          }
+        }
+      </style>
+    `;
+
+    if (combinedHtml.includes('</head>')) {
+      combinedHtml = combinedHtml.replace('</head>', `${responsiveOverrides}</head>`);
+    } else {
+      combinedHtml += responsiveOverrides;
+    }
+
+    // Set srcdoc directly to bypass CORS block under file:// protocol
+    previewIframe.removeAttribute('src');
+    previewIframe.srcdoc = combinedHtml;
+
+    // Switch view back to Preview tab automatically
+    activeTab = 'preview';
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      if (btn.dataset.tab === 'preview') {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.remove('active'));
+    document.getElementById('panel-preview').classList.add('active');
+    
+    // Update active tab path indicator
+    const folder = `chapters/${activeChapter.num}-${activeChapter.name}`;
+    filePathIndicator.textContent = `${folder}/index.html`;
+
+    // Reset toolbar visibilities
+    updateCopyButtonVisibility();
   });
 }
 
@@ -372,15 +512,139 @@ searchInput.addEventListener('input', (e) => {
 });
 
 // Toggle Sidebar on mobile viewports
+const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+
 toggleSidebarBtn.addEventListener('click', () => {
-  sidebar.classList.toggle('open');
+  const isOpen = sidebar.classList.toggle('open');
+  if (sidebarBackdrop) {
+    if (isOpen) {
+      sidebarBackdrop.classList.add('visible');
+    } else {
+      sidebarBackdrop.classList.remove('visible');
+    }
+  }
 });
+
+// Close sidebar on backdrop click
+if (sidebarBackdrop) {
+  sidebarBackdrop.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    sidebarBackdrop.classList.remove('visible');
+  });
+}
 
 // Theme Switcher (light/dark mode)
 themeToggleBtn.addEventListener('click', () => {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   const targetTheme = currentTheme === 'light' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', targetTheme);
+  
+  // Sync theme inside iframe
+  try {
+    const doc = previewIframe.contentDocument || previewIframe.contentWindow.document;
+    if (doc && doc.documentElement) {
+      doc.documentElement.setAttribute('data-theme', targetTheme);
+    }
+  } catch (e) {
+    console.warn('Could not sync theme with iframe:', e);
+  }
+});
+
+// Inject responsive styling into preview iframe
+previewIframe.addEventListener('load', () => {
+  try {
+    const doc = previewIframe.contentDocument || previewIframe.contentWindow.document;
+    if (doc) {
+      if (!doc.getElementById('responsive-preview-overrides')) {
+        const style = doc.createElement('style');
+        style.id = 'responsive-preview-overrides';
+        style.textContent = `
+          /* Universal mobile responsiveness overrides */
+          * {
+            box-sizing: border-box !important;
+          }
+          html, body {
+            max-width: 100% !important;
+            overflow-x: hidden !important;
+          }
+          body {
+            padding: 8px !important;
+            margin: 0 !important;
+          }
+          body * {
+            max-width: 100% !important; /* Prevent any child from overflowing horizontally */
+          }
+          .container {
+            max-width: 100% !important;
+            padding: 10px !important;
+            box-sizing: border-box !important;
+            margin: 0 auto !important;
+          }
+          .card {
+            padding: 12px !important;
+            margin-bottom: 16px !important;
+          }
+          /* Ensure specific demos and custom cards scale responsively */
+          .demo, .card, .glass-card, .neumorphism, .local-box, .fallback-box, .reuse-card, .theme, .light-theme, .dark-theme, .dashboard-card {
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+          }
+          .glass-container-bg {
+            padding: 10px !important;
+            box-sizing: border-box !important;
+          }
+          .glass-card {
+            width: 100% !important;
+            padding: 15px !important;
+          }
+          h1 {
+            font-size: 1.4rem !important;
+            margin-bottom: 16px !important;
+            word-wrap: break-word !important;
+          }
+          h2 {
+            font-size: 0.95rem !important;
+            margin-bottom: 12px !important;
+            word-wrap: break-word !important;
+          }
+          .wrap {
+            max-width: 100% !important;
+          }
+          /* Adjust flex, grid and other demo containers */
+          .flex-row, .flex-column,
+          .justify-start, .justify-center, .justify-end, .justify-between, .justify-around, .justify-evenly,
+          .align-start, .align-center, .align-end,
+          .wrap, .gap-demo, .grow-demo, .shrink-demo, .basis-demo, .self-demo {
+            padding: 8px !important;
+            box-sizing: border-box !important;
+          }
+          /* Adjust font size and elements for extra small screens */
+          @media (max-width: 480px) {
+            body {
+              padding: 5px !important;
+            }
+            .container {
+              padding: 6px !important;
+            }
+            .card {
+              padding: 6px !important;
+            }
+            .demo {
+              width: 100% !important;
+              height: 100px !important;
+            }
+          }
+        `;
+        doc.head.appendChild(style);
+        
+        // Pass parent theme to iframe
+        const parentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        doc.documentElement.setAttribute('data-theme', parentTheme);
+      }
+    }
+  } catch (e) {
+    console.warn('Could not inject responsive styles into iframe:', e);
+  }
 });
 
 // -------------------------------------------------------------
